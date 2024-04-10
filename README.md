@@ -16,7 +16,7 @@ The model consists of the following parameters:
 - A_wake: Amyloid production during wake
 - A_sleep: Amyloid production during sleep
 - k: Amyloid clearance from blood
-- 
+
 ## Parameters Values
 
 | Parameter | Value |
