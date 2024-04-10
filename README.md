@@ -2,6 +2,7 @@
 
 ## Two compartment Model for Amyloid Clearance
 Compartment 1 - Blood (B)
+
 Compartment 2 - CSF (C)
 
 ## Parameters
