@@ -1,10 +1,10 @@
 # Two Compartment Model for Brain Clearance
 
-This repository contains code for simulating a two-compartment model for brain clearance. In this model, Compartment 1 represents Blood (B) and Compartment 2 represents CSF (C).
+This repository contains code for simulating a two-compartment model for brain clearance. In this model
 
-Compartment 1 - Blood (B)
+Compartment 1 represents Blood (B)
 
-Compartment 2 - CSF (C)
+Compartment 2 represents CSF (C)
 
 ## Model Description
 
