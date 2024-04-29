@@ -30,12 +30,12 @@ function total_error = objective_function(params, exp_csf, exp_plasma)
     [t, sol] = ode45(@(t, y) model(t, y, a21, a12_wake, a12_sleep, A_wake, A_sleep, k), [0, 24*10], [exp_csf(1), exp_plasma(1)], opts);
 
     % Check if sol has enough data points
-    if size(sol, 1) < 36001
+    if size(sol, 1) < 204001
         error('Integration did not proceed far enough to generate sufficient data points.');
     end
     
-    csf_last_36hours_data = sol(end-36000:end, 1);
-    plasma_last_36hours_data = sol(end-36000:end, 2);
+    csf_last_36hours_data = sol(end-204000:end, 1);
+    plasma_last_36hours_data = sol(end-204000:end, 2);
 
     time_indices = 1:36;
     csf_last_36hours = csf_last_36hours_data(time_indices);
@@ -56,8 +56,8 @@ end
 initial_guess = [0.1, 0.1, 0.3, 30, 1, 2];
 
 % Define bounds for parameters
-lb = [0, 0, 0, 0, 0, 0];
-ub = [100, 100, 100, 100, 100, 100];
+lb = [0, 0, 0, 10, 0, 0];
+ub = [10, 10, 10, 100, 10, 10];
 
 % Minimize the objective function to find optimal parameters using pattern search
 options = optimoptions(@patternsearch,'MaxFunctionEvaluations',1000,'MaxIterations',1000);
@@ -83,7 +83,7 @@ fprintf('k: %f\n', k_opt);
 % Solve the model with optimized parameters at each hour and save the results
 fileID = fopen('model_output_each_hour_with_mse_loss_bound100_patternsearch.csv', 'w');
 fprintf(fileID, 'Time,CSF,Plasma\n');
-for hour = 0:120
+for hour = 0:240
     try
         opts = odeset('MaxStep',0.001);  % Define opts inside the loop
         [t, sol] = ode45(@(t, y) model(t, y, a21_opt, a12_wake_opt, a12_sleep_opt, A_wake_opt, A_sleep_opt, k_opt), [0 hour], [exp_csf(1), exp_plasma(1)], opts);
