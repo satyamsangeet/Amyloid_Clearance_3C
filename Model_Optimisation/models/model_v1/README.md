@@ -14,28 +14,14 @@
 **Optimisation Algorithm: Pattern Search**
 | Parameter | Bounds |
 |-----------|-------|
-| a21       | 0, 10  |
-| a12_wake  | 0.1   |
-| a12_sleep | 0.3   |
-| A_wake    | 30    |
-| A_sleep   | 1     |
-| k         | 2     |
-| Step SIze | 0.001 |
-a21 bounds: (0, 10)
-
-a12_wake bounds: (0, 10)
-
-a12_sleep bounds: (0, 10)
-
-A_wake bounds: (10, 100)
-
-A_sleep bounds: (0, 10)
-
-k bounds: (0, 10)
+| a21       | 0,10 |
+| a12_wake  | 0,10   |
+| a12_sleep | 0,10   |
+| A_wake    | 10,100    |
+| A_sleep   | 0,10     |
+| k         | 0,10     |
 
 Iterations: 1000
-
-Final loss function value: 0.13149957553283242
 	
 **Optimised parameter values**
 a21_opt: 0.26113103050336894
