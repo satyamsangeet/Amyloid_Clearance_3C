@@ -1,21 +1,26 @@
 **Model V1**
 
 **Initial Guess Values**
-a21: 0.1
-
-a12_wake: 0.1 
-
-a12_sleep:0.3
-
-A_wake: 30
-
-A_sleep: 1
-
-k: 2
-
-StepSize: 0.001
+| Parameter | Value |
+|-----------|-------|
+| a21       | 0.1   |
+| a12_wake  | 0.1   |
+| a12_sleep | 0.3   |
+| A_wake    | 30    |
+| A_sleep   | 1     |
+| k         | 2     |
+| Step SIze | 0.001 |
 	
 **Optimisation Algorithm: Pattern Search**
+| Parameter | Bounds |
+|-----------|-------|
+| a21       | 0, 10  |
+| a12_wake  | 0.1   |
+| a12_sleep | 0.3   |
+| A_wake    | 30    |
+| A_sleep   | 1     |
+| k         | 2     |
+| Step SIze | 0.001 |
 a21 bounds: (0, 10)
 
 a12_wake bounds: (0, 10)
