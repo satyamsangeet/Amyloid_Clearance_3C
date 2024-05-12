@@ -448,3 +448,118 @@ Model V19: {
 	a21: 1.999609
 	k: 9.000000
 	}
+Model V24: {
+	Initial Guess Values
+	a12_wake: 0.1
+	A_wake: 10
+	k: 0.2
+	StepSize: 0.01
+	
+	Optimisation Algorithm: Pattern Search
+	a12_wake bounds: (0, 1)
+	A_wake bounds: (0, 20)
+	k bounds: (0,1)
+	Iterations: 1000
+	
+	Optimized Parameters:
+	A_wake: 0.000122
+	a12_wake: 0.787782
+	k: 0.133800
+	}
+	
+Model V25: {
+	Initial Guess Values
+	a12_wake: 0.1
+	A_wake: 10
+	A_sleep: 1
+	k: 0.2
+	StepSize: 0.01
+	
+	Optimisation Algorithm: Pattern Search
+	a12_wake bounds: (0, 1)
+	A_wake bounds: (0, 20)
+	A_sleep bounds: (0, 5)
+	k bounds: (0,1)
+	Iterations: 1000
+	
+	Optimized Parameters:
+	A_wake: 10.003906
+	A_sleep: 4.205566
+	a12_wake: 0.100099
+	k: 0.999988
+	}
+	
+Model V26: {
+	Initial Guess Values
+	a12_wake: 0.1
+	A_wake: 10
+	a: 0.2
+	k: 0.2
+	StepSize: 0.01
+	
+	Optimisation Algorithm: Pattern Search
+	a12_wake bounds: (0, 1)
+	A_wake bounds: (0, 20)
+	a bounds: (0, 1)
+	k bounds: (0,1)
+	Iterations: 100
+	
+	Optimized Parameters:
+	A_wake: 10.000000
+	a: 0.950000
+	a12_wake: 0.287500
+	k: 0.762500
+	}
+
+Model V27: {
+	Initial Guess Values
+	a12_wake: 0.1
+	A_wake: 10
+	a: 0.2
+	k: 0.2
+	StepSize: 0.01
+	
+	Optimisation Algorithm: Pattern Search
+	a12_wake bounds: (0.1, 1)
+	A_wake bounds: (5, 20)
+	a bounds: (0, 2)
+	k bounds: (0,0.4)
+	Iterations: 1000
+	
+	Optimized Parameters:
+	A_wake: 19.244019
+	a: 1.144511
+	a12_wake: 0.473796
+	k: 0.399997
+	}
+
+Model V28: {
+	Initial Guess Values
+	a12_wake: 0.1
+	a13_wake: 0.1
+	a23_wake: 0.2
+	A_wake: 10
+	A_sleep: 7
+	a: 0.9
+	k: 0.2
+	StepSize: 0.01
+	
+	Optimisation Algorithm: Pattern Search
+	a12_wake bounds: (0, 0.1)
+	a13_wake bounds: (0, 0.1)
+	a23_wake bounds: (0, 0.3)
+	A_wake bounds: (10, 10.5)
+	A_sleep bounds: (7, 7.5)
+	a bounds: (0.89, 0.99)
+	k bounds: (0.1,0.6)
+	Iterations: 300
+	
+	Optimized Parameters:
+	A_wake: 10.500000
+	A_sleep: 7.000000
+	a12_wake: 0.100000
+	k: 0.200000
+	a: 0.989996
+	a13_wake: 0.100000
+	a23_wake: 0.300000
+	}
