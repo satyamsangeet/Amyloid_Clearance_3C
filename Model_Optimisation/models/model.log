@@ -563,3 +563,126 @@ Model V28: {
 	a13_wake: 0.100000
 	a23_wake: 0.300000
 	}
+
+Model V29: {
+	Initial Guess Values
+	a12_wake: 0.1
+	a13_wake: 0.1
+	a23_wake: 0.2
+	A_wake: 10
+	A_sleep: 7
+	a: 0.9
+	k: 0.2
+	StepSize: 0.01
+	
+	Optimisation Algorithm: Pattern Search
+	a12_wake bounds: (0, 1)
+	a13_wake bounds: (0, 1)
+	a23_wake bounds: (0, 1)
+	A_wake bounds: (5, 30)
+	A_sleep bounds: (5, 15)
+	a bounds: (0, 2)
+	k bounds: (0,1)
+	Iterations: 300
+	
+	Condition: with 2.5 times the clearance rate
+	
+	Optimised Parameters:
+	A_wake: 30.000000
+	A_sleep: 10.000000
+	a12_wake: 0.500000	
+	k: 1.179688
+	a: 1.472656
+	a13_wake: 0.000391
+	a23_wake: 0.200000
+	}
+	
+Model V30: {
+	Initial Guess Values
+	a12_wake: 0.1
+	a13_wake: 0.1
+	a23_wake: 0.2
+	A_wake: 10
+	A_sleep: 7
+	a: 0.9
+	k: 0.2
+	StepSize: 0.01
+	
+	Optimisation Algorithm: Pattern Search
+	a12_wake bounds: (0, 1)
+	a13_wake bounds: (0, 1)
+	a23_wake bounds: (0, 1)
+	A_wake bounds: (5, 30)
+	A_sleep bounds: (5, 15)
+	a bounds: (0, 2)
+	k bounds: (0,1)
+	Iterations: 300
+	
+	Condition: without 2.5 times the clearance rate
+	}
+	
+Model V31: {
+	Initial Guess Values
+	a12_wake: 0.35
+	a13_wake: 0.22
+	a23_wake: 0.2
+	A_wake: 10
+	A_sleep: 7.2
+	a: 0.8
+	k: 0.2
+	StepSize: 0.01
+	
+	Optimisation Algorithm: Pattern Search
+	a12_wake bounds: (0.1, 0.4)
+	a13_wake bounds: (0.1, 0.3)
+	a23_wake bounds: (0.1, 0.3)
+	A_wake bounds: (10, 11)
+	A_sleep bounds: (7, 9)
+	a bounds: (0, 1)
+	k bounds: (0.1,0.7)
+	Iterations: 500
+	
+	Condition: without 2.5 times the clearance rate
+	
+	Optimised Parameters:
+	A_wake: 11.000000
+	A_sleep: 7.000049
+	a12_wake: 0.400000
+	k: 0.700000
+	a: 0.999997
+	a13_wake: 0.300000
+	a23_wake: 0.300000
+	}
+	
+Model V33: {
+	Initial Guess Values
+	a12_wake: 0.35
+	a13_wake: 0.22
+	a23_wake: 0.15
+	A_wake: 9
+	A_sleep: 7.2
+	a: 0.8
+	k: 0.2
+	StepSize: 0.01
+	
+	Optimisation Algorithm: Pattern Search
+	a12_wake bounds: (0.1, 0.4)
+	a13_wake bounds: (0.1, 0.3)
+	a23_wake bounds: (0.1, 0.3)
+	A_wake bounds: (9, 10)
+	A_sleep bounds: (7, 9)
+	a bounds: (0, 1)
+	k bounds: (0.1,0.7)
+	Iterations: 500
+	
+	Condition: without 2.5 times the clearance rate
+	
+	Optimised Parameters:
+	A_wake: 10.000000
+	A_sleep: 7.000049
+	a12_wake: 0.400000
+	k: 0.700000
+	a: 0.999997
+	a13_wake: 0.300000
+	a23_wake: 0.300000
+	}
