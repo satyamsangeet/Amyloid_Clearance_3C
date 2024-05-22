@@ -686,3 +686,42 @@ Model V33: {
 	a13_wake: 0.300000
 	a23_wake: 0.300000
 	}
+
+Model V35: {
+	Initial Guess Values
+	a12_wake: 0.35
+	a23_wake: 0.22
+	a32_wake: 0.15
+	a34_wake: 0.1
+	A_wake: 9
+	A_sleep: 7.2
+	a: 0.8
+	k: 0.2
+	Vmax: 1.4e-6 M/h/kg
+	Km: 0.8e-6 uM
+	StepSize: 0.01
+	
+	Optimisation Algorithm: Pattern Search
+	a12_wake bounds: (0.1, 0.5)
+	a23_wake bounds: (0.1, 0.5)
+	a32_wake bounds: (0.1, 0.5)
+	a34_wake bounds: (0.1, 0.5)
+	A_wake bounds: (9, 15)
+	A_sleep bounds: (7, 12)
+	a bounds: (0, 1)
+	k bounds: (0.1,1)
+	Iterations: 500
+	
+	Condition: without 2.5 times the clearance rate
+	new model considering 4 compartments: Brain, CSF, ISF and Plasma alongwith a MM Kinetics from csf_to_isf
+	
+	Optimised Parameters:
+	A_wake: 15.000000
+	A_sleep: 7.004688
+	a12_wake: 0.499902
+	k: 0.999805
+	a: 0.999219
+	a23_wake: 0.499785
+	a32_wake: 0.100195
+	a34_wake: 0.499902
+	}
