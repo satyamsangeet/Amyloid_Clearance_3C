@@ -725,3 +725,105 @@ Model V35: {
 	a32_wake: 0.100195
 	a34_wake: 0.499902
 	}
+
+Model V36: {
+	Initial Guess Values
+	a12_wake: 0.3
+	a13_wake: 0.25
+	a23_wake: 0.2
+	A_wake: 10
+	A_sleep: 7.2
+	a: 0.9
+	k: 0.5
+	StepSize: 0.01
+	
+	Optimisation Algorithm: Pattern Search
+	a12_wake bounds: (0.3, 0.4)
+	a13_wake bounds: (0.2, 0.3)
+	a23_wake bounds: (0.2, 0.3)
+	A_wake bounds: (9, 11)
+	A_sleep bounds: (7, 9)
+	a bounds: (0.8, 1)
+	k bounds: (0.4,0.9)
+	Iterations: 500
+	
+	Condition: without 2.5 times the clearance rate. All the rates were multiplied by a during night
+	
+	Optimised Parameters:
+	A_wake = 10.000000
+	A_sleep = 7.000049
+	a12_wake = 0.400000
+	k = 0.700000
+	a = 0.999997
+	a13_wake = 0.300000
+	a23_wake = 0.300000
+	}
+	
+Model V37: {
+	Initial Guess Values
+	a12_wake: 0.8
+	a13_wake: 0.6
+	a23_wake: 0.25
+	A_wake: 10
+	A_sleep: 7
+	a: 0.99
+	k: 0.2
+	StepSize: 0.01
+	
+	Optimisation Algorithm: Pattern Search
+	a12_wake bounds: (0.79, 0.85)
+	a13_wake bounds: (0.6, 0.65)
+	a23_wake bounds: (0.17, 0.25)
+	A_wake bounds: (9.7, 10.5)
+	A_sleep bounds: (7, 8)
+	a bounds: (0.9, 0.99)
+	k bounds: (0.2, 0.25)
+	Iterations: 1000
+	
+	Dual clearance model with three compartment
+	
+	Optimised Parameters:
+	A_wake: 10.500000
+	A_sleep: 7.000000
+	a12_wake: 0.790002	
+	k: 0.250000
+	a: 0.990000
+	a13_wake: 0.649999
+	a23_wake: 0.250000
+	}
+	
+Model V38: {
+	Initial Guess Values
+	a12_wake: 0.2
+	a23_wake: 0.1
+	a24_wake: 0.4
+	a34_wake: 0.2
+	A_wake: 10
+	A_sleep: 7
+	a: 0.99
+	k: 0.4
+	StepSize: 0.01
+	
+	Optimisation Algorithm: Pattern Search
+	a12_wake bounds: (0, 1)
+	a23_wake bounds: (0, 1)
+	a24_wake bounds: (0, 1)
+	a34_wake bounds: (0, 1)
+	A_wake bounds: (9, 15)
+	A_sleep bounds: (5, 12)
+	a bounds: (0, 1)
+	k bounds: (0, 1)
+	Iterations: 1000
+	
+	Dual clearance model with four compartment
+	
+	Optimised Parameters:
+	a12_wake: 0.637500
+	a23_wake: 0.100000
+	a24_wake: 0.556250
+	a34_wake: 0.700000
+	A_wake: 10.750000
+	A_sleep: 6.625000
+	k: 0.400000
+	a: 0.544687
+	}
