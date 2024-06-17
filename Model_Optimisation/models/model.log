@@ -697,8 +697,6 @@ Model V35: {
 	A_sleep: 7.2
 	a: 0.8
 	k: 0.2
-	Vmax: 1.4e-6 M/h/kg
-	Km: 0.8e-6 uM
 	StepSize: 0.01
 	
 	Optimisation Algorithm: Pattern Search
@@ -713,17 +711,17 @@ Model V35: {
 	Iterations: 500
 	
 	Condition: without 2.5 times the clearance rate
-	new model considering 4 compartments: Brain, CSF, ISF and Plasma alongwith a MM Kinetics from csf_to_isf
+	new model considering 4 compartments: Brain, CSF, ISF and Plasma 
 	
 	Optimised Parameters:
-	A_wake: 15.000000
-	A_sleep: 7.004688
-	a12_wake: 0.499902
-	k: 0.999805
-	a: 0.999219
-	a23_wake: 0.499785
-	a32_wake: 0.100195
-	a34_wake: 0.499902
+	A_wake = 10.000000
+	A_sleep = 7.000003
+	a12_wake = 0.400000
+	k = 0.250000
+	a = 1.019999
+	a23_wake = 0.699999
+	a24_wake = 0.300000
+	a34_wake = 0.599999
 	}
 
 Model V36: {
@@ -750,13 +748,13 @@ Model V36: {
 	Condition: without 2.5 times the clearance rate. All the rates were multiplied by a during night
 	
 	Optimised Parameters:
-	A_wake = 10.000000
-	A_sleep = 7.000049
-	a12_wake = 0.400000
-	k = 0.700000
-	a = 0.999997
-	a13_wake = 0.300000
-	a23_wake = 0.300000
+	A_wake = 12.300000
+	A_sleep = 8.611669
+	a12_wake = 0.325142
+	k = 0.63
+	a = 1.01
+	a13_wake = 0.243856
+	a23_wake = 0.243857
 	}
 	
 Model V37: {
