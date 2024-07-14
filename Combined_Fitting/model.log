@@ -16,11 +16,9 @@ Model V1: { Two compartments: Brain and Plasma
 	Iterations: 2000
 	
 	Optimised Parameters:
-	A_wake: 10.500000
-	A_sleep: 7.000000
-	a12_wake: 0.790002	
-	k: 0.250000
-	a: 0.990000
-	a13_wake: 0.649999
-	a23_wake: 0.250000
+	a12_wake: 0.221358
+	A_wake: 9.122817
+	A_sleep: 7.294531
+	a: 1.050000
+	k: 0.321362
 	}
