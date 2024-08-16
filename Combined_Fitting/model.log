@@ -22,3 +22,38 @@ Model V1: { Two compartments: Brain and Plasma
 	a: 1.050000
 	k: 0.321362
 	}
+
+Model V50: { Three compartments: Brain, CSF and Plasma
+	Initial Guess Values
+	a = 3;
+    	b = 4;
+    	c = 4;
+    	A_wake = 21;
+    	A_sleep = 0.8*A_wake;    %From experimnetal data
+    	a12_wake = 0.3;
+    	a12_sleep = 2.5*a12_wake;    %From Xie et al., 2013 (Clearance during sleep is 2.5 times)
+    	a13_wake = 0.02;
+    	a13_sleep = a*a13_wake;
+    	a23_sleep = 0.06601;    %From experimnetal data - half life of amyloid in CSF during night: t_1/2 = ln(2)/k where the t_1/2 of amyloid in csf was taken as 10.2 hrs
+    	a23_wake = a23_sleep/b;
+    	k_wake = 0.231049;    %%From experimnetal data - half life of amyloid in Plasma during wake: t_1/2 = ln(2)/k where the t_1/2 of amyloid in plasma was taken as 3 hrs
+    	k_sleep = c*k_wake;
+	StepSize: 0.001
+	
+	Optimisation Algorithm: Pattern Search
+	a_wake bounds: (1, 10)
+	b_wake bounds: (1, 10)
+	c_wake bounds: (1, 10)
+	A_wake bounds: (1, 24)
+	a12 bounds: (0.1, 1)
+	a13 bounds: (0.01, 0.1)
+	Iterations: 5000
+	
+	Optimised Parameters:
+	a: 2.702494
+	b: 3.542306
+	c: 3.576970
+	A_wake: 21.000000
+	a12_wake: 0.188698
+	a13_wake: 0.010000
+	}
