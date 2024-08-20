@@ -105,8 +105,9 @@ function [total_error, is_valid] = objective_function(params, exp_csf, exp_plasm
     csf_weights = 1./(csf_std.^2);
     plasma_weights = 1./(plasma_std.^2);
 
-    error_C = sqrt(mean(csf_weights .* (normalised_C - exp_csf).^2));
-    error_B = sqrt(mean(plasma_weights .* (normalised_B - exp_plasma).^2));
+    %applying weighted root mean square error
+    error_C = sqrt(sum(csf_weights .* (normalised_C - exp_csf).^2) / sum(csf_weights));
+    error_B = sqrt(sum(plasma_weights .* (normalised_B - exp_plasma).^2) / sum(plasma_weights));
 
     total_error = error_C + error_B;
     
