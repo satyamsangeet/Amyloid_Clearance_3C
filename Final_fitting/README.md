@@ -47,13 +47,11 @@ We have used WRMSE in the case of model fit with Liu et al., 2022 data, since th
 | c             | 1.794493           | [Huang value]        |
 | A_wake (pg/ml/hr)        | 22.056825          | [Huang value]        |
 | A_sleep (pg/ml/hr)       | 0.8 * A_wake       | [Huang value]        |
-| a12_wake      | 0.999998           | [Huang value]        |
-| a12_sleep     | 2.5 * a12_wake     | [Huang value]        |
-| a13_wake      | 0.100000           | [Huang value]        |
-| a13_sleep     | a * a13_wake       | [Huang value]        |
-| a23_sleep     | 0.06601            | [Huang value]        |
-| a23_wake      | a23_sleep / b      | [Huang value]        |
-| k_wake        | 0.231049           | [Huang value]        |
-| k_sleep       | c * k_wake         | [Huang value]        |
-| StepSize      | 0.001              | [Huang value]        |
-| Iterations    | 2000               | [Huang value]        |
+| a12_wake (/hr)      | 0.999998           | [Huang value]        |
+| a12_sleep (/hr)     | 2.5 * a12_wake     | [Huang value]        |
+| a13_wake (/hr)      | 0.100000           | [Huang value]        |
+| a13_sleep (/hr)     | a * a13_wake       | [Huang value]        |
+| a23_sleep (/hr)     | 0.06601            | [Huang value]        |
+| a23_wake (/hr)      | a23_sleep / b      | [Huang value]        |
+| k_wake (/hr)        | 0.231049           | [Huang value]        |
+| k_sleep (/hr)       | c * k_wake         | [Huang value]        |
