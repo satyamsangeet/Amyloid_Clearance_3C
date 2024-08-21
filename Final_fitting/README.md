@@ -4,13 +4,9 @@
 Normalized RMSE (NRMSE) accounts for the scale of the target data, making it useful for comparing models across different datasets.
 
 **Formula:**
-\[
-$\text{NRMSE} = \frac{\text{RMSE}}{\text{range}(y)}$
-\]
+\[$\text{NRMSE} = \frac{\text{RMSE}}{\text{range}(y)}$\]
 or
-\[
-\text{NRMSE} = \frac{\text{RMSE}}{\mu_y}
-\]
+\[$\text{NRMSE} = \frac{\text{RMSE}}{\mu_y}$\]
 
 where:
 - \(\text{RMSE} = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2}\)
@@ -23,9 +19,7 @@ where:
 Weighted RMSE (WRMSE) allows for differential weighting of errors, making it useful when some observations are more important than others.
 
 **Formula:**
-\[
-\text{WRMSE} = \sqrt{\frac{\sum_{i=1}^{n} w_i \cdot (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} w_i}}
-\]
+\[$\text{WRMSE} = \sqrt{\frac{\sum_{i=1}^{n} w_i \cdot (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} w_i}}$\]
 
 where:
 - \(w_i\) is the weight assigned to the \(i\)-th observation.
