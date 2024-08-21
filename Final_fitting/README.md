@@ -23,7 +23,7 @@ where:
 Weighted RMSE (WRMSE) allows for differential weighting of errors, making it useful when some observations are more important than others.
 
 **Formula:**
-$\WRMSE = \sqrt{\frac{\sum_{i=1}^{n}w_{i}.\left( y_{i} - \hat{y}_i\right)^2}{\sum_{i=1}^{n}w_{i}}}$
+$`\WRMSE = \sqrt{\frac{\sum_{i=1}^{n}w_{i}.\left( y_{i} - \hat{y}_i\right)^2}{\sum_{i=1}^{n}w_{i}}}`$
 
 where:
 - \$w_i\$ is the weight assigned to the \$i\$-th observation.
