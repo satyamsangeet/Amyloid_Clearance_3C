@@ -28,9 +28,9 @@ $\text{WRMSE} = \sqrt{\frac{\sum_{i=1}^{n} w_i \cdot (y_i - \hat{y}_i)^2}{\sum_{
 \]
 
 where:
-- \$w_i\$ is the weight assigned to the \(i\)-th observation.
-- \(y_i\) are the true values.
-- \(\hat{y}_i\) are the predicted values.
+- \$w_i\$ is the weight assigned to the \$i\$-th observation.
+- \$y_i\$ are the true values.
+- \$\hat{y}_i\$ are the predicted values.
 
 - We have used NRMSE in the case of model fit with Huang et al., 2012 data, since the experimnetal data point doesn't have any error bar associated with it. In this case, all data points were treated equally. The optimization algorithm aimed to minimize the overall error across all points, without giving preference to any particular data points based on their uncertainty.
 
