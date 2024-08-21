@@ -35,3 +35,25 @@ where:
 We have used NRMSE in the case of model fit with Huang et al., 2012 data, since the experimnetal data point doesn't have any error bar associated with it. In this case, all data points were treated equally. The optimization algorithm aimed to minimize the overall error across all points, without giving preference to any particular data points based on their uncertainty.
 
 We have used WRMSE in the case of model fit with Liu et al., 2022 data, since the experimnetal data point have error bars associated with it. In this case, we gave more weight to data points with lower uncertainty (low SD) and less weight to those with higher uncertainty (high SD). This means the optimization algorithm prioritized fitting the model to the more reliable data points, resulting in parameter values that best fit those specific points.
+
+**Optimised Model Parameters**
+
+## Model V51: Three Compartment Model (Brain, CSF, Plasma)
+
+| **Parameter** | **Liu Fit Values** | **Huang Fit Values** |
+|---------------|-------------------|----------------------|
+| a             | 1.000010           | [Huang value]        |
+| b             | 1.931690           | [Huang value]        |
+| c             | 1.794493           | [Huang value]        |
+| A_wake        | 22.056825          | [Huang value]        |
+| A_sleep       | 0.8 * A_wake       | [Huang value]        |
+| a12_wake      | 0.999998           | [Huang value]        |
+| a12_sleep     | 2.5 * a12_wake     | [Huang value]        |
+| a13_wake      | 0.100000           | [Huang value]        |
+| a13_sleep     | a * a13_wake       | [Huang value]        |
+| a23_sleep     | 0.06601            | [Huang value]        |
+| a23_wake      | a23_sleep / b      | [Huang value]        |
+| k_wake        | 0.231049           | [Huang value]        |
+| k_sleep       | c * k_wake         | [Huang value]        |
+| StepSize      | 0.001              | [Huang value]        |
+| Iterations    | 2000               | [Huang value]        |
