@@ -13,11 +13,11 @@ $\text{NRMSE} = \frac{\text{RMSE}}{\mu_y}$
 \]
 
 where:
-- \($\text{RMSE} = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2}$\)
-- \(y_i\) are the true values.
-- \(\hat{y}_i\) are the predicted values.
-- \(\text{range}(y)\) is the difference between the maximum and minimum values of \(y\).
-- \(\mu_y\) is the mean of the true values.
+- \$\text{RMSE} = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2}$\
+- \$y_i\ are the true values.
+- \$\hat{y}_i\$ are the predicted values.
+- \$\text{range}(y)\$ is the difference between the maximum and minimum values of \(y\).
+- \$\mu_y\$ is the mean of the true values.
 
 ### Weighted RMSE (WRMSE)
 Weighted RMSE (WRMSE) allows for differential weighting of errors, making it useful when some observations are more important than others.
