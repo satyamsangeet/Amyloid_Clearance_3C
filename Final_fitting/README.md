@@ -28,7 +28,7 @@ $\text{WRMSE} = \sqrt{\frac{\sum_{i=1}^{n} w_i \cdot (y_i - \hat{y}_i)^2}{\sum_{
 \]
 
 where:
-- \(w_i\) is the weight assigned to the \(i\)-th observation.
+- \$w_i\$ is the weight assigned to the \(i\)-th observation.
 - \(y_i\) are the true values.
 - \(\hat{y}_i\) are the predicted values.
 
