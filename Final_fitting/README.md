@@ -38,15 +38,15 @@ We have used WRMSE in the case of model fit with Liu et al., 2022 data, since th
 
 **Optimised Model Parameters**
 
-## Model V51: Three Compartment Model (Brain, CSF, Plasma)
+## Three Compartment Model (Brain, CSF, Plasma)
 
 | **Parameter** | **Liu Fit Values** | **Huang Fit Values** |
 |---------------|-------------------|----------------------|
 | a             | 1.000010           | [Huang value]        |
 | b             | 1.931690           | [Huang value]        |
 | c             | 1.794493           | [Huang value]        |
-| A_wake        | 22.056825          | [Huang value]        |
-| A_sleep       | 0.8 * A_wake       | [Huang value]        |
+| A_wake (pg/ml/hr)        | 22.056825          | [Huang value]        |
+| A_sleep (pg/ml/hr)       | 0.8 * A_wake       | [Huang value]        |
 | a12_wake      | 0.999998           | [Huang value]        |
 | a12_sleep     | 2.5 * a12_wake     | [Huang value]        |
 | a13_wake      | 0.100000           | [Huang value]        |
