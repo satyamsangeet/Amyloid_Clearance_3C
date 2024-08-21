@@ -42,16 +42,16 @@ We have used WRMSE in the case of model fit with Liu et al., 2022 data, since th
 
 | **Parameter** | **Liu Fit Values** | **Huang Fit Values** |
 |---------------|-------------------|----------------------|
-| a             | 1.000010           | [Huang value]        |
-| b             | 1.931690           | [Huang value]        |
-| c             | 1.794493           | [Huang value]        |
-| A_wake (pg/ml/hr)        | 22.056825          | [Huang value]        |
-| A_sleep (pg/ml/hr)       | 0.8 * A_wake       | [Huang value]        |
-| a12_wake (/hr)      | 0.999998           | [Huang value]        |
-| a12_sleep (/hr)     | 2.5 * a12_wake     | [Huang value]        |
-| a13_wake (/hr)      | 0.100000           | [Huang value]        |
-| a13_sleep (/hr)     | a * a13_wake       | [Huang value]        |
-| a23_sleep (/hr)     | 0.06601            | [Huang value]        |
-| a23_wake (/hr)      | a23_sleep / b      | [Huang value]        |
-| k_wake (/hr)        | 0.231049           | [Huang value]        |
-| k_sleep (/hr)       | c * k_wake         | [Huang value]        |
+| a             | 1.000010           | 2.945697       |
+| b             | 1.931690           | 4.389072       |
+| c             | 1.794493           | 4.006562        |
+| A_wake (pg/ml/hr)        | 22.056825          | 21.074357       |
+| A_sleep (pg/ml/hr)       | 0.8 * A_wake       | 0.8 * A_wake       |
+| a12_wake (/hr)      | 0.999998           | 0.116481        |
+| a12_sleep (/hr)     | 2.5 * a12_wake     | 2.5 * a12_wake       |
+| a13_wake (/hr)      | 0.100000           | 0.010355        |
+| a13_sleep (/hr)     | a * a13_wake       | a * a13_wake       |
+| a23_sleep (/hr)     | 0.06601            | 0.06601       |
+| a23_wake (/hr)      | a23_sleep / b      | a23_sleep / b       |
+| k_wake (/hr)        | 0.231049           | 0.231049       |
+| k_sleep (/hr)       | c * k_wake         | c * k_wake       |
