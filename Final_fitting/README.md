@@ -31,6 +31,7 @@ where:
 - \$\hat{y}_i\$ are the predicted values.
 
 **Note**
+
 We have used NRMSE in the case of model fit with Huang et al., 2012 data, since the experimnetal data point doesn't have any error bar associated with it. In this case, all data points were treated equally. The optimization algorithm aimed to minimize the overall error across all points, without giving preference to any particular data points based on their uncertainty.
 
 We have used WRMSE in the case of model fit with Liu et al., 2022 data, since the experimnetal data point have error bars associated with it. In this case, we gave more weight to data points with lower uncertainty (low SD) and less weight to those with higher uncertainty (high SD). This means the optimization algorithm prioritized fitting the model to the more reliable data points, resulting in parameter values that best fit those specific points.
