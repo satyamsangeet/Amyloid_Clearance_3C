@@ -5,7 +5,7 @@ Normalized RMSE (NRMSE) accounts for the scale of the target data, making it use
 
 **Formula:**
 \[
-\text{NRMSE} = \frac{\text{RMSE}}{\text{range}(y)}
+$\text{NRMSE} = \frac{\text{RMSE}}{\text{range}(y)}$
 \]
 or
 \[
