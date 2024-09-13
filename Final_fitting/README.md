@@ -43,8 +43,8 @@ We have used WRMSE in the case of model fit with Liu et al., 2022 data, since th
 | **Parameter** | **Liu Fit Values** | **Huang Fit Values** |
 |---------------|-------------------|----------------------|
 | a             | 1.000010           | 2.945697       |
-| b             | 1.931690           | 4.389072       |
-| c             | 1.794493           | 4.006562        |
+| b             | 1.603175           | 4.389072       |
+| c             | 1.532420           | 4.006562        |
 | A_wake (pg/ml/hr)        | 22.056825          | 21.074357       |
 | A_sleep (pg/ml/hr)       | 0.8 * A_wake       | 0.8 * A_wake       |
 | a12_wake (/hr)      | 0.999998           | 0.116481        |
