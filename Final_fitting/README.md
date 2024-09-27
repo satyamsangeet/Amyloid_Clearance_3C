@@ -56,4 +56,4 @@ We have used WRMSE in the case of model fit with Liu et al., 2022 data, since th
 | k_wake (/hr)        | 0.231049           | 0.231049       | 0.277258 |
 | k_sleep (/hr)       | c * k_wake         | c * k_wake       | c * k_wake |
 
-**Combined Fit** represents the model fitting on the normal sleep-wake data of Lucey2018 (CSF Data), Blattner2020 (CSF Data), Liu2022 (CSF + Plasma Data)
+**Combined Fit** represents the model fitting on the normal sleep-wake data of Lucey2018 (CSF Data), Blattner2020 (CSF Data), Liu2022 (CSF + Plasma Data). WRMSE was used to fit the model with the experimnetal data as all the experimnetal data had stadard error associated with it
