@@ -1,18 +1,17 @@
-% Main script for model fitting and analysis
+% Model Fitting
 
-% Set paths to your plasma data files
+% Data file path
 csf_data_file1 = '/home/satyam/Documents/combined_fitting_data/final_fitting/blattner2020_csf42.csv';
 csf_data_file2 = '/home/satyam/Documents/combined_fitting_data/final_fitting/lucey2018_csf42.csv';
 csf_data_file3 = '/home/satyam/Documents/combined_fitting_data/final_fitting/liu2022_csf42.csv';
 plasma_data_file1 = '/home/satyam/Documents/combined_fitting_data/final_fitting/liu2022_plasma42.csv';
 
-% Read plasma data from files
 csf_data1 = readtable(csf_data_file1);
 csf_data2 = readtable(csf_data_file2);
 csf_data3 = readtable(csf_data_file3);
 plasma_data1 = readtable(plasma_data_file1);
 
-% Extract data from both plasma files
+% Extracting time, conc, lower bound and upper bound of SD
 time_exp1 = csf_data1.Time;
 time_exp2 = csf_data2.Time;
 time_exp3 = csf_data3.Time;
@@ -33,28 +32,28 @@ csf_std2 = (csf_usd2 - csf_lsd2)/2;
 csf_std3 = (csf_usd3 - csf_lsd3)/2;
 plasma_std1 = (plasma_usd1 - plasma_lsd1)/2;
 
-% Define the initial guess, lower, and upper bounds
+% Initail guess, lower bound, upper bound
 initial_guess = [3, 12, 0.003];  % Optimizing sigma_bp (a), sigma_cp (b), rbc (a12_wake)
 lb = [1, 10, 0.0001];  % Lower bounds for sigma_bp, sigma_cp, and rbc
 ub = [10, 15, 0.005];  % Upper bounds for sigma_bp, sigma_cp, and rbc
 learning_rate = 0.01;
 
-% Set up optimization options
+% Setting the optim options
 options = optimoptions('fmincon', 'Display', 'iter', 'MaxIterations', 2000, 'MaxFunctionEvaluations', 10000);
 
-% Run the optimization
+% Running optim
 [optimized_params, fval] = fmincon(@(params) objective_function_fmincon(params, csf_conc_exp1, csf_conc_exp2, csf_conc_exp3, plasma_conc_exp1, csf_std1, csf_std2, csf_std3, plasma_std1), ...
     initial_guess, [], [], [], [], lb, ub, @nlcon, options);
 
-% Run bootstrapping
+% Running bootstrapping
 num_bootstraps = 10;
 confidence_level = 0.95;
 [param_means, param_stds, param_ci] = bootstrap_parameters(csf_conc_exp1, csf_conc_exp2, csf_conc_exp3, plasma_conc_exp1, csf_std1, csf_std2, csf_std3, plasma_std1, num_bootstraps, confidence_level);
 
-% Run the model for 100 days with optimized parameters
+% 2400 hours or 100 days run (24 hours * 100 days)
 [t_100days, sol_100days] = euler(@(t,y) model(t,y,optimized_params), [0, 24*100], [0,600,15.5], 0.01);
 
-% Save the simulation results using high precision
+% Saving data
 fileID = fopen('/home/satyam/Documents/combined_fitting_data/final_fitting/combined_model_v1_output_new_values.csv', 'w');
 fprintf(fileID, 'Time,Brain,CSF,Plasma\n');
 for i = 1:length(t_100days)
@@ -62,31 +61,26 @@ for i = 1:length(t_100days)
 end
 fclose(fileID);
 
-% Print optimized parameters
+% Optim params
 fprintf('\nOptimized Parameters for Three Datasets:\n');
 fprintf('sigma_bp: %f\n', optimized_params(1));
 fprintf('sigma_p: %f\n', optimized_params(2));
 fprintf('r_cp: %f\n', optimized_params(3));
 
-% Print results
 param_names = {'sigma_bp', 'sigma_p', 'r_cp'};
 for i = 1:length(param_names)
     fprintf('%s: mean = %.4f, std = %.4f, 95%% CI = [%.4f, %.4f]\n', ...
         param_names{i}, param_means(i), param_stds(i), param_ci(1,i), param_ci(2,i));
 end
 
-% Run model with optimized parameters
+% Running model with optim params
 [t, y] = euler(@(t, y) model(t, y, optimized_params), [0, 24*100], [0, 600, 15.5], 0.01);
 
-% Load saved results for comparison
 saved_data = readmatrix('/home/satyam/Documents/combined_fitting_data/final_fitting/combined_model_v1_output_new_values.csv');
 t_saved = saved_data(:, 1);
 y_saved = saved_data(:, 2:end);
 
-% Create visualization plots
 createVisualizationPlots(t, y, t_saved, y_saved, sol_100days, csf_conc_exp1, csf_conc_exp2, csf_conc_exp3, plasma_conc_exp1);
-
-% Function definitions below
 
 function [c, ceq] = nlcon(params)
     r_cp = params(3);
