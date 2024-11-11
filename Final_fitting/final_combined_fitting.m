@@ -204,7 +204,7 @@ num_starts = 10;
 md = MultiStart('UseParallel', true, 'Display', 'iter');
 
 % optimisation
-[optimized_params, fval] = run(ms, problem, num_starts);
+[optimized_params, fval] = run(md, problem, num_starts);
 
 num_bootstraps = 100;
 confidence_level = 0.95;
