@@ -1,16 +1,20 @@
 # Two Compartment Model for Brain Clearance
 
-This repository contains code for simulating a two-compartment model for brain clearance. In this model
+This repository contains code for simulating a three-compartment model for brain clearance. In this model
 
-Compartment 1 represents CSF (C)
+Compartment 1 represents Brain (B)
 
-Compartment 2 represents Blood (B)
+Compartment 2 represents CSF (C)
+
+Compartment 3 represents Plasma (P)
 
 ## Model Description
 
 The model consists of the following parameters:
 
-- a21: Amyloid transfer from Blood to CSF
+- A: Amyloid production
+- sigma_A: Scalinf factor to denote a loss in productioin during sleep
+- \r_{bc}: Amyloid transfer from Blood to CSF
 - a12_wake: Amyloid transfer from CSF to blood during wake state
 - a12_sleep: Amyloid transfer from CSF to blood during sleep state
 - A_wake: Amyloid production during wake
