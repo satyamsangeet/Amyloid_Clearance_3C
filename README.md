@@ -16,7 +16,7 @@ The model consists of the following parameters:
 - sigma_A: Scaling factor to denote a loss in productioin during sleep
 - $\text r_{bc}$: Amyloid transfer from Brain to CSF during wake
 - $\text sigma_{bc}$: Scaling factor to denote increase in amyloid transfer from Brain to CSF during sleep
-- $\text r_{bp}: Amyloid transfer from Brain to Plasma during wake
+- $\text r_{bp}$: Amyloid transfer from Brain to Plasma during wake
 - $\text sigma_{bp}$: Scaling factor to denote increase in amyloid transfer from Brain to Plasma during sleep
 - $\text r_{cp}$: Amyloid transfer from CSF to Plasma during wake
 - $\text sigma_{cp}$: Scaling factor to denote increase in amyloid transfer from CSF to Plasma during sleep
@@ -31,12 +31,12 @@ The model consists of the following parameters:
 | $\text sigma_{A}$  | 0.8   |
 | $\text r_{bc}$ | 1.5   |
 | $\text sigma_{bc}$   | 2.5    |
-| $\text r_{bp}$   | $\text{r}_{bp} = \frac{\text{r}_{bc} \cdot (1 - 133 \cdot \text{r}_{cp})}{133 \cdot \text{r}_{cp}}$|
-| $\text sigma_{bp}         | 3.99     |
-| $\text r_{cp}         | 3.99     |
-| $\text sigma_{cp}         | 0.005     |
-| $\text r_{p}         | 0.28     |
-| $\text sigma_{p}         | 2.58     |
+| $\text r_{bp}$   | $\frac{\text{r}_{bc} \cdot (1 - 133 \cdot \text{r}_{cp})}{133 \cdot \text{r}_{cp}}$|
+| $\text sigma_{bp}$         | 3.99     |
+| $\text r_{cp}$         | 3.99     |
+| $\text sigma_{cp}$         | 0.005     |
+| $\text r_{p}$         | 0.28     |
+| $\text sigma_{p}$         | 2.58     |
 
 ## Steady State Solutions
 
