@@ -12,25 +12,31 @@ Compartment 3 represents Plasma (P)
 
 The model consists of the following parameters:
 
-- A: Amyloid production
-- sigma_A: Scalinf factor to denote a loss in productioin during sleep
-- $\text r_{bc}$: Amyloid transfer from Blood to CSF
-- a12_wake: Amyloid transfer from CSF to blood during wake state
-- a12_sleep: Amyloid transfer from CSF to blood during sleep state
-- A_wake: Amyloid production during wake
-- A_sleep: Amyloid production during sleep
-- k: Amyloid clearance from blood
+- A: Amyloid production during wake
+- sigma_A: Scaling factor to denote a loss in productioin during sleep
+- $\text r_{bc}$: Amyloid transfer from Brain to CSF during wake
+- $\text sigma_{bc}$: Scaling factor to denote increase in amyloid transfer from Brain to CSF during sleep
+- $\text r_{bp}: Amyloid transfer from Brain to Plasma during wake
+- $\text sigma_{bp}$: Scaling factor to denote increase in amyloid transfer from Brain to Plasma during sleep
+- $\text r_{cp}$: Amyloid transfer from CSF to Plasma during wake
+- $\text sigma_{cp}$: Scaling factor to denote increase in amyloid transfer from CSF to Plasma during sleep
+- $\text r_{p}$: Amyloid transfer from Plasma to Systemic Circulation during wake
+- $\text sigma_{p}$: Scaling factor to denote increase in amyloid transfer from Plasma to Systemic Circulation during sleep
 
-## Parameters Values
+## Optimised Parameters Values
 
 | Parameter | Value |
 |-----------|-------|
-| a21       | 0.3   |
-| a12_wake  | 0.1   |
-| a12_sleep | 0.5   |
-| A_wake    | 69    |
-| A_sleep   | 1     |
-| k         | 2     |
+| A       | 12   |
+| $\text sigma_{A}$  | 0.8   |
+| $\text r_{bc}$ | 1.5   |
+| $\text sigma_{bc}$   | 2.5    |
+| $\text r_{bp}$   | $\text{r}_{bp} = \frac{\text{r}_{bc} \cdot (1 - 133 \cdot \text{r}_{cp})}{133 \cdot \text{r}_{cp}}$|
+| $\text sigma_{bp}         | 3.99     |
+| $\text r_{cp}         | 3.99     |
+| $\text sigma_{cp}         | 0.005     |
+| $\text r_{p}         | 0.28     |
+| $\text sigma_{p}         | 2.58     |
 
 ## Steady State Solutions
 
