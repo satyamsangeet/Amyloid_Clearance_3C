@@ -14,7 +14,7 @@ The model consists of the following parameters:
 
 - A: Amyloid production
 - sigma_A: Scalinf factor to denote a loss in productioin during sleep
-- $\r_{bc}$: Amyloid transfer from Blood to CSF
+- $\text r_{bc}$: Amyloid transfer from Blood to CSF
 - a12_wake: Amyloid transfer from CSF to blood during wake state
 - a12_sleep: Amyloid transfer from CSF to blood during sleep state
 - A_wake: Amyloid production during wake
