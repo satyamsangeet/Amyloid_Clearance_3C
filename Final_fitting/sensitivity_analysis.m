@@ -1,4 +1,3 @@
-% Parameters
 sigma_A = 0.8;
 A = 13;
 rbc = 1.5;
@@ -7,31 +6,25 @@ sigma_bc = 2.5;
 rbp = (rbc*(1-133*rcp))/(133*rcp);
 rp = 0.28;
 sigma_p = 2.89;
-
-% Range of sigma_bp and sigma_cp values
 sigma_bp_values = linspace(0.1, 10, 100);
 sigma_cp_values = linspace(0.1, 10, 100);
 
-% Create meshgrid for 2D analysis
 [SIGMA_BP, SIGMA_CP] = meshgrid(sigma_bp_values, sigma_cp_values);
 
-% Sensitivity calculations for B*
+% B*
 sensitivity_B_sigma_bp = -sigma_A * A * rbp ./ (sigma_bp_values * rbp + sigma_bc * rbc).^2;
 sensitivity_B_sigma_cp = zeros(size(sigma_cp_values));
 
-% Sensitivity calculations for C*
+% C*
 sensitivity_C_sigma_bp = -sigma_bc * rbc * sigma_A * A * rbp ./ (rcp * SIGMA_CP .* (sigma_bc * rbc + SIGMA_BP * rbp).^2);
 sensitivity_C_sigma_cp = -sigma_bc * rbc * sigma_A * A ./ (rcp * SIGMA_CP.^2 .* (sigma_bc * rbc + sigma_bp_values * rbp));
 
-% Sensitivity calculation for P*
+% P*
 sensitivity_P_sigma_bp = sigma_A * A * rbp ./ ((sigma_bp_values * rbp + sigma_bc * rbc) * sigma_p * rp).^2;
 sensitivity_P_sigma_cp = zeros(size(sigma_cp_values));
 
-% Create figure with dark background
 figure();
 set(gcf, 'Position', [100 100 1000 600]);
-
-% Create subplot for each sensitivity measure
 subplot(2,3,1)
 plot(sigma_bp_values, sensitivity_B_sigma_bp, 'LineWidth', 2.5, 'Color', 'red');
 title('\partial \rho_{b}^{s*} / \partial \sigma_{bp}', 'FontSize', 14);
