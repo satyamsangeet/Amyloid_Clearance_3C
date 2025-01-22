@@ -67,5 +67,5 @@ grid on;
 xlabel('\sigma_{cp}');
 ylabel('Sensitivity');
 
-% Add gradient effects using colormap
+% colour gradient
 colormap(hot);
