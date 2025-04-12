@@ -1,4 +1,4 @@
-# Two Compartment Model for Brain Clearance
+# Three Compartment Model for Brain Clearance
 
 This repository contains code for simulating a three-compartment model for brain clearance. In this model
 
@@ -27,25 +27,16 @@ The model consists of the following parameters:
 
 | Parameter | Value |
 |-----------|-------|
-| A       | 12   |
-| $\text sigma_{A}$  | 0.8   |
-| $\text r_{bc}$ | 1.5   |
-| $\text sigma_{bc}$   | 2.5    |
-| $\text r_{bp}$   | $\frac{\text{r}_{bc} \cdot (1 - 133 \cdot \text{r}_{cp})}{133 \cdot \text{r}_{cp}}$|
-| $\text sigma_{bp}$         | 3.99     |
-| $\text r_{cp}$         | 3.99     |
-| $\text sigma_{cp}$         | 0.005     |
-| $\text r_{p}$         | 0.28     |
-| $\text sigma_{p}$         | 2.58     |
-
-## Steady State Solutions
-
-The steady state solutions for the model with the `a21` parameter are as follows:
-
-- B_w(t) = A_wake / (k - a21)
-- C_w(t) = (k * A_wake) / (a12_wake * (k - a21))
-- B_s(t) = A_sleep / (k - a21)
-- C_s(t) = (k * A_sleep) / (a12_sleep * (k - a21))
+| A       | 12.063   |
+| $\text sigma_{A}$  | 0.782   |
+| $\text r_{bc}$ | 1.623   |
+| $\text sigma_{bc}$   | 2.505    |
+| $\text r_{bp}$   | 0.199    |
+| $\text sigma_{bp}$         |  4.618    |
+| $\text r_{cp}$         | 0.00572     |
+| $\text sigma_{cp}$         | 5.190     |
+| $\text r_{p}$         | 0.300     |
+| $\text sigma_{p}$         | 4.670     |
 
 ## Usage
 
