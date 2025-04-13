@@ -14,19 +14,17 @@ set(groot, ...
     'DefaultAxesBox', 'off', ...
     'DefaultAxesTickLength', [0.02 0.025]);
 
-% tickdirs out
 set(groot, 'DefaultAxesTickDir', 'out');
 set(groot, 'DefaultAxesTickDirMode', 'manual');
 
 function dydt_n = model_param_variation(t, y, params)
-    % Unpack parameters
     A = params.A;
     sigma_A = params.sigma_A;
     r_bc = params.r_bc;
     sigma_bc = params.sigma_bc;
     r_cp = params.r_cp;
     sigma_cp = params.sigma_cp;
-    r_bp = (r_bc*(1-133*r_cp))/(133*r_cp);
+    r_bp = params.r_bp;
     sigma_bp = params.sigma_bp;
     r_p = params.r_p;
     sigma_p = params.sigma_p;
@@ -58,26 +56,26 @@ end
 
 % Default parameters
 params = struct();
-params.A = 13;
-params.sigma_A = 0.8;
-params.r_bc = 1.5;
-params.sigma_bc = 2.5;
-params.r_cp = 0.0056; 
-params.sigma_cp = 3.99;
-params.sigma_bp = 3.99;
-params.r_p = 0.28;
-params.sigma_p = 2.89;
+params.A = 11.724;
+params.sigma_A = 0.731;
+params.r_bc = 1.319;
+params.sigma_bc = 1.185;
+params.r_cp = 0.00545; 
+params.sigma_cp = 4.173;
+params.r_bp = 0.242;
+params.sigma_bp = 6.607;
+params.r_p = 0.317;
+params.sigma_p = 4.028;
 
-% Generate r_cp values for variation
+% Generate variation
 num_variations = 20;
-default_value = 2.89; 
+default_value = 4.028; 
 
-% Create array of r_cp values
+% array
 sigma_p_values = linspace(0, 10, num_variations);
 [~, default_index] = min(abs(sigma_p_values - default_value));
 sigma_p_values(default_index) = default_value;
 
-% Generate jet colormap
 jet_colors = jet(num_variations);
 colors = jet_colors;
 colors(default_index,:) = [0 0 0];
@@ -96,7 +94,7 @@ for i = 1:3
     
     for j = 1:length(sigma_p_values)
         params.sigma_p = sigma_p_values(j);
-        [t, sol] = euler(@(t,y,p) model_param_variation(t,y,p), [0, 24*100], [0,600,15.5], 0.01, params);
+        [t, sol] = euler(@(t,y,p) model_param_variation(t,y,p), [0, 24*100], [1,600,15.5], 0.01, params);
         
         if j == default_index  % Default value
             plot(t(t >= 2336 & t <= 2386), sol(t >= 2336 & t <= 2386, i), ...
