@@ -1,5 +1,3 @@
-% general graphics, this will apply to any figure you open
-% (groot is the default figure object).
 set(groot, ...
 'DefaultFigureColor', 'w', ...
 'DefaultAxesLineWidth', 0.5, ...
@@ -15,34 +13,28 @@ set(groot, ...
 'DefaultAxesBox', 'off', ...
 'DefaultAxesTickLength', [0.02 0.025]);
  
-% set the tickdirs to go out - need this specific order
 set(groot, 'DefaultAxesTickDir', 'out');
 set(groot, 'DefaultAxesTickDirMode', 'manual');
 
-% Updated model function to optimize only sigma_bp (a), sigma_cp (b), and rbc (a12_wake)
 function dydt_n = model_global_wrmse(t, y)
-    A = 12;
-    sigma_A = 0.8;
-    r_bc = 1.5;
-    sigma_bc = 2.5;
-    r_cp = 0.0056;
-    sigma_cp = 3.99;
-    r_bp = (r_bc*(1-133*r_cp))/(133*r_cp);
-    sigma_bp = 3.99;
-    r_p = 0.28;
-    sigma_p = 2.89;
-
-    % Switch between sleep and wake states
+    A = 11.724;
+    sigma_A = 0.731;
+    r_bc = 1.319;
+    sigma_bc = 1.185;
+    r_cp = 0.00545;
+    sigma_cp = 4.173;
+    r_bp = 0.242;
+    sigma_bp = 6.607;
+    r_p = 0.317;
+    sigma_p = 4.028;
     sw_cycle = (mod(t, 24) >= 8 && mod(t, 24) < 24);
-    
-    % Define the ODE system
+
     dydt_n = zeros(3, 1);
     dydt_n(1) = A * sw_cycle + sigma_A * A * (1 - sw_cycle) - (r_bp * sw_cycle + sigma_bp * r_bp * (1 - sw_cycle) + r_bc * sw_cycle + sigma_bc * r_bc * (1 - sw_cycle)) * y(1);
     dydt_n(2) = (r_bc * sw_cycle + sigma_bc * r_bc * (1 - sw_cycle)) * y(1) - (r_cp * sw_cycle + sigma_cp * r_cp * (1 - sw_cycle)) * y(2);
     dydt_n(3) = (r_bp * sw_cycle + sigma_bp * r_bp * (1 - sw_cycle)) * y(1) + (r_cp * sw_cycle + sigma_cp * r_cp * (1 - sw_cycle)) * y(2) - (r_p * sw_cycle + sigma_p * r_p * (1 - sw_cycle)) * y(3);
 end
 
-% Defining Euler-Maruyama Method
 function [t, w] = euler(F, endpoints, initial_conditions, ts)
     % Calculate number of steps and time vector
     total_time = endpoints(2) - endpoints(1);
@@ -61,11 +53,10 @@ function [t, w] = euler(F, endpoints, initial_conditions, ts)
     end
 end
 
-% Main script
-% Run simulation
-[t_100days_gwrmse, sol_100days_gwrmse] = euler(@(t,y) model_global_wrmse(t,y), [0, 24*100], [0,600,15.5], 0.01);
 
-% Plot comparison
+[t_100days_gwrmse, sol_100days_gwrmse] = euler(@(t,y) model_global_wrmse(t,y), [0, 24*100], [1,600,15.5], 0.01);
+
+% Plot
 figure;
 subplot(3, 1, 1);
 hold on;
