@@ -1,11 +1,11 @@
 %H1
 function dydt_n = model1(t, y)
-    A = 13.791866842295299;
-    sigma_A = 0.718493031801368;
-    r_bp = 0.092859916742039;
-    sigma_bp = 2.526995585282243;
-    r_p = 0.285014821392297;
-    sigma_p = 5.859219697739381;
+    A = 13.791;
+    sigma_A = 0.718;
+    r_bp = 0.092;
+    sigma_bp = 2.526;
+    r_p = 0.285;
+    sigma_p = 5.859;
 
     % Switch between sleep and wake states
     if(t>=2336 && t<2372)
@@ -14,10 +14,10 @@ function dydt_n = model1(t, y)
         sigma_bc = 0.073;
         sigma_cp = 0.920;
     else
-        r_bc = 2.349030412757668;
-        sigma_bc = 1.117763182229140;
-        r_cp = 0.006556023403031;
-        sigma_cp = 6.416831718871831;
+        r_bc = 2.349;
+        sigma_bc = 1.117;
+        r_cp = 0.00655;
+        sigma_cp = 6.416;
     end
 
     sw_cycle = (mod(t,24) >=8 && mod(t,24) < 24);
@@ -30,11 +30,11 @@ end
 
 %H2
 function dydt_n = model2(t, y)
-    A = 13.791866842295299; 
-    r_bp = 0.092859916742039;
-    r_p = 0.285014821392297;
-    r_bc = 2.349030412757668;
-    r_cp = 0.006556023403031;
+    A = 13.791; 
+    r_bp = 0.092;
+    r_p = 0.285;
+    r_bc = 2.349;
+    r_cp = 0.00655;
 
     % Switch between sleep and wake states
     if(t>=2336 && t<2372)
@@ -44,11 +44,11 @@ function dydt_n = model2(t, y)
         sigma_cp = 1.557;
         sigma_p = 3.966;
     else
-        sigma_A = 0.718493031801368;
-        sigma_bc = 1.117763182229140;
-        sigma_bp = 2.526995585282243;
-        sigma_cp = 6.416831718871831;
-        sigma_p = 5.859219697739381;
+        sigma_A = 0.718;
+        sigma_bc = 1.117;
+        sigma_bp = 2.526;
+        sigma_cp = 6.416;
+        sigma_p = 5.859;
     end
 
     sw_cycle = (mod(t,24) >=8 && mod(t,24) < 24);
@@ -61,9 +61,9 @@ end
 
 %H3
 function dydt_n = model3(t, y)
-    A = 13.791866842295299; 
-    r_bp = 0.092859916742039;
-    r_p = 0.285014821392297;
+    A = 13.791; 
+    r_bp = 0.092;
+    r_p = 0.285;
 
     % Switch between sleep and wake states
     if(t>=2336 && t<2372)
@@ -75,13 +75,13 @@ function dydt_n = model3(t, y)
         sigma_cp = 1.921;
         sigma_p = 0.862;
     else
-    	r_bc = 2.349030412757668;
-    	r_cp = 0.006556023403031;
-        sigma_A = 0.718493031801368;
-        sigma_bc = 1.117763182229140;
-        sigma_bp = 2.526995585282243;
-        sigma_cp = 6.416831718871831;
-        sigma_p = 5.859219697739381;
+    	r_bc = 2.349;
+    	r_cp = 0.00655;
+        sigma_A = 0.718;
+        sigma_bc = 1.117;
+        sigma_bp = 2.526;
+        sigma_cp = 6.416;
+        sigma_p = 5.859;
     end
 
     sw_cycle = (mod(t,24) >=8 && mod(t,24) < 24);
@@ -94,10 +94,10 @@ end
 
 %H4
 function dydt_n = model4(t, y)
-    A = 13.791866842295299; 
-    r_p = 0.285014821392297;
-    sigma_A = 0.718493031801368;
-    sigma_p = 5.859219697739381;
+    A = 13.791; 
+    r_p = 0.285;
+    sigma_A = 0.718;
+    sigma_p = 5.859;
 
     % Switch between sleep and wake states
     if(t>=2336 && t<2372)
@@ -108,12 +108,12 @@ function dydt_n = model4(t, y)
         sigma_bp = 2.844;
         sigma_cp = 4.441;
     else
-    	r_bc = 2.349030412757668;
-    	r_cp = 0.006556023403031;
-        r_bp = 0.092859916742039;
-        sigma_bc = 1.117763182229140;
-        sigma_bp = 2.526995585282243;
-        sigma_cp = 6.416831718871831;
+    	r_bc = 2.349;
+    	r_cp = 0.00655;
+        r_bp = 0.0928;
+        sigma_bc = 1.117;
+        sigma_bp = 2.526;
+        sigma_cp = 6.416;
         
     end
 
@@ -127,22 +127,22 @@ end
 
 %H5
 function dydt_n = model5(t, y)
-    A = 13.791866842295299;
-    sigma_A = 0.718493031801368;
-    r_bp = 0.092859916742039;
-    sigma_bp = 2.526995585282243;
-    r_p = 0.285014821392297;
-    sigma_p = 5.859219697739381;
-    r_cp = 0.006556023403031;
-    r_bc = 2.349030412757668;
+    A = 13.791;
+    sigma_A = 0.718;
+    r_bp = 0.092;
+    sigma_bp = 2.526;
+    r_p = 0.285;
+    sigma_p = 5.859;
+    r_cp = 0.00655;
+    r_bc = 2.349;
 
     % Switch between sleep and wake states
     if(t>=2352 && t<2372)
         sigma_bc = 0.1003;
         sigma_cp = 0.2574;
     else
-        sigma_bc = 1.117763182229140;
-        sigma_cp = 6.416831718871831;
+        sigma_bc = 1.117;
+        sigma_cp = 6.416;
     end
 
     sw_cycle = (mod(t,24) >=8 && mod(t,24) < 24);
