@@ -3,20 +3,14 @@ rng(42);
 global optimization_history;
 optimization_history = [];
 
-% Set paths to your plasma data files
 csf_data_file1 = 'data/blattner2020_csf_concentration.csv';
-
-% Read plasma data from both files
 csf_data1 = readtable(csf_data_file1);
-
-% Extract data from both plasma files
 time_exp1 = csf_data1.Time;
 csf_conc_exp1 = csf_data1.Concentration;
 csf_lsd1 = csf_data1.LSD;
 csf_usd1 = csf_data1.USD;
 csf_std1 = (csf_usd1 - csf_lsd1)/2;
 
-% Updated model function
 function dydt_n = model(t, y, params)
     A = 13.791866842295299;
     sigma_A = 0.718493031801368;
@@ -25,7 +19,7 @@ function dydt_n = model(t, y, params)
     r_p = 0.285014821392297;
     sigma_p = 5.859219697739381;
 
-    % Switch between sleep and wake states
+    % Switch
     if(t>=2336 && t<2372)
         r_bc = params(1);
         r_cp = params(2);
@@ -40,14 +34,12 @@ function dydt_n = model(t, y, params)
 
     sw_cycle = (mod(t,24) >=8 && mod(t,24) < 24);
     
-    % Define the ODE system
     dydt_n = zeros(3, 1);
     dydt_n(1) = A * sw_cycle + sigma_A * A * (1 - sw_cycle) - (r_bp * sw_cycle + sigma_bp * r_bp * (1 - sw_cycle) + r_bc * sw_cycle + sigma_bc * r_bc * (1 - sw_cycle)) * y(1);
     dydt_n(2) = (r_bc * sw_cycle + sigma_bc * r_bc * (1 - sw_cycle)) * y(1) - (r_cp * sw_cycle + sigma_cp * r_cp * (1 - sw_cycle)) * y(2);
     dydt_n(3) = (r_bp * sw_cycle + sigma_bp * r_bp * (1 - sw_cycle)) * y(1) + (r_cp * sw_cycle + sigma_cp * r_cp * (1 - sw_cycle)) * y(2) - (r_p * sw_cycle + sigma_p * r_p * (1 - sw_cycle)) * y(3);
 end
 
-% Defining Euler-Maruyama Method
 function [t, w] = euler(F, endpoints, initial_conditions, ts)
     if length(endpoints) == 2
         h = ts; %delta_t (seconds)
@@ -66,7 +58,6 @@ function [t, w] = euler(F, endpoints, initial_conditions, ts)
     t = t(:);
 end
 
-% Defining Objective Function for fmincon
 function [total_error] = objective_function_fmincon(params, exp_csf1)
     global optimization_history;
     optimization_history = [optimization_history; params];
@@ -91,7 +82,6 @@ function [total_error] = objective_function_fmincon(params, exp_csf1)
 
     total_error = nrmse_C1;
 
-    % Print current parameters and errors for debugging
     fprintf('Parameters: r_bc=%.5f, r_cp=%.5f, sigma_bc=%.5f, sigma_cp=%.5f\n', ...
             params(1), params(2), params(3), params(4));
     fprintf('Individual Study Errors: CSF1=%.5f\n', ...
@@ -118,27 +108,20 @@ function plot_parameter_space(solutions, num_starts)
         fvals(i) = solutions(i).Fval;
     end
     
-    % Create parameter names for plotting
     param_names = {'r_bc', 'r_cp', 'sigma_bc', 'sigma_cp'};
-    
-    % Get colormap with num_starts distinct colors
     colors = jet(num_starts);
     
-    % Create figure with subplots for each parameter
     figure('Position', [100, 100, 1200, 800]);
-    
-    % Create a cell array to store plot handles for legend
+
     plot_handles = cell(num_starts, 1);
     
     for i = 1:4
         subplot(3, 4, i);
         hold on;
         
-        % Plot each run's data point with a distinct color
         for j = 1:num_starts
             h = scatter(params_matrix(j,i), fvals(j), 50, colors(j,:), 'filled');
-            
-            % Store handle for first subplot to use in legend
+
             if i == 1
                 plot_handles{j} = h;
             end
@@ -155,7 +138,6 @@ function plot_parameter_space(solutions, num_starts)
     subplot(3, 4, 11);  % Use position 11 for legend
     hold on;
     
-    % Create dummy invisible plot for legend
     for j = 1:num_starts
         scatter(NaN, NaN, 50, colors(j,:), 'filled', 'DisplayName', sprintf('Run %d', j));
     end
@@ -166,9 +148,7 @@ function plot_parameter_space(solutions, num_starts)
     saveas(gcf, 'blattner_exp_fit3/parameter_space.png');
     print('blattner_exp_fit3/parameter_space_highres', '-dpng', '-r300');
 
-    % NEW CODE: Save parameter space data to CSV files
     for param_idx = 1:4
-        % Create and open CSV file for this parameter
         param_name = param_names{param_idx};
         csv_filename = sprintf('blattner_exp_fit3/parameter_space_%s.csv', param_name);
         
@@ -187,7 +167,6 @@ function plot_parameter_space(solutions, num_starts)
 end
 
 % Main script
-% Set optimization parameters
 num_starts = 20;
 initial_guess = [2.5, 0.005, 0.8, 5];
 lb = [2.349, 0.0001, 0.01, 0.01];
@@ -235,14 +214,11 @@ end
 % Best solution tracking
 best_fval = Inf;
 best_params = [];
-aic_values = zeros(num_starts, 1); % To store AIC values
 
 % For each start point
 for i = 1:num_starts
-    % Reset optimization history for this run
     optimization_history = [];
     
-    % Create problem with current start point
     problem.x0 = customStartPoints(i,:);
     
     % Run optimization
