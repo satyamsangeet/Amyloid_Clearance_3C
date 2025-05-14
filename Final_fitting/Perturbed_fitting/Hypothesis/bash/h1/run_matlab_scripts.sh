@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# Define the MATLAB scripts to run in sequence
+# script
 SCRIPT1="blattner_fit.m"
 SCRIPT2="lucey_fit.m"
 SCRIPT3="liu_fit.m"
 
-# Function to run a MATLAB script
+# Function
 run_matlab_script() {
     script=$1
     echo "Running MATLAB script: $script"
