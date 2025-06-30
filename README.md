@@ -40,8 +40,6 @@ The model simulates amyloid-beta production and clearance between the brain, CSF
 - **r_bc, r_bp, r_cp, r_p**: Transfer rates between compartments during wake
 - **sigma_bc, sigma_bp, sigma_cp, sigma_p**: Scaling factors for transfer rates during sleep
 
-See the parameter tables below for optimized values from different fits.
-
 ---
 
 ## Main Scripts and Usage
