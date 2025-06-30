@@ -47,23 +47,9 @@ The fitting uses data from three key studies:
 
 **Purpose**: Optimize model parameters by fitting to all datasets simultaneously.
 
-**Advantages**:
-- More robust parameter estimates by leveraging multiple studies
-- Reduces overfitting to individual dataset characteristics
-- Provides a unified model for normal sleep-wake dynamics
-
-**Method**: Uses weighted NRMSE across all datasets to find optimal parameters.
-
 ### Individual Fitting (`Individual_fits/`)
 
 **Purpose**: Optimize model parameters for each dataset separately.
-
-**Advantages**:
-- Reveals dataset-specific parameter characteristics
-- Allows comparison of parameter estimates across studies
-- Helps identify potential dataset-specific biases
-
-**Method**: Uses NRMSE for each individual dataset.
 
 ## Model Structure
 
@@ -72,12 +58,6 @@ Both approaches use the same three-compartment model:
 ```
 Brain (B) ←→ CSF (C) ←→ Plasma (P)
 ```
-
-**Key Features**:
-- Sleep/wake cycle modulation (16h wake, 8h sleep)
-- 10 parameters optimized: transfer rates and sleep scaling factors
-- 100-day simulation to reach steady state
-- 36-hour experimental window extraction
 
 ## Usage
 
@@ -131,16 +111,6 @@ Each individual fit generates:
 - Dataset-specific parameter estimates
 - Parameter space exploration plots
 
-## Error Metrics
-
-### Normalized RMSE (NRMSE)
-Used for all normal sleep-wake fitting:
-\[
-\text{NRMSE} = \frac{\text{RMSE}}{\text{range}(y)}
-\]
-
-This metric normalizes errors by the data range, making comparisons across datasets meaningful.
-
 ## Parameter Bounds
 
 All fitting approaches use the same parameter bounds:
@@ -157,24 +127,3 @@ All fitting approaches use the same parameter bounds:
 | `A` | Amyloid production rate (wake) | pg/ml/hr | [9, 14] |
 | `sigma_A` | Sleep scaling for production | - | [0.7, 0.9] |
 | `r_p` | Plasma clearance rate (wake) | /hr | [0.23, 0.34] |
-
-## Comparison and Analysis
-
-### Global vs Individual Results
-Compare global and individual fitting results to:
-- Assess parameter consistency across datasets
-- Identify dataset-specific characteristics
-- Validate the global fitting approach
-
-### Key Insights
-- **Liu Dataset**: Unique dual-compartment fitting provides additional constraints
-- **Parameter Robustness**: Global fitting typically provides more stable estimates
-- **Dataset Compatibility**: Individual fits reveal how well datasets align
-
-## Notes
-
-- All scripts use the same random seed (42) for reproducibility
-- 20 optimization runs from different starting points for robustness
-- Sleep/wake cycles: 16-hour wake (8:00-24:00), 8-hour sleep (0:00-8:00)
-- Initial conditions: Brain=0, CSF=600, Plasma=15.5 pg/ml
-- Time step: 0.01 hours 
