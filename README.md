@@ -67,12 +67,17 @@ To run these scripts, open them in MATLAB and execute (e.g., `model_dynamics` or
 
 ## Data
 
-Experimental data from published studies are provided in CSV format under `Lumbar_puncture_fitting/data/`.
+Experimental data from published studies are provided in CSV format under `Normal_sleep_wake_fitting/data/` for normal sleep-wake fitting
+- `blattner_wake_conc.csv`
+- `lucey_wake_conc.csv`
+- `liu_csf_wake_conc.csv`
+- `liu_plasma_wake_conc.csv`
+
+Experimental data from published studies are provided in CSV format under `Lumbar_puncture_fitting/data/` for lumbar puncture fitting
 - `blattner2020_csf_concentration.csv`
 - `lucey2018_csf_concentration.csv`
 - `liu2022_csf_concentration.csv`
 - `liu2022_plasma_concentration.csv`
-
 ---
 
 ## Error Metrics
