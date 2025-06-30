@@ -1,4 +1,3 @@
-
 # Pressure Hypothesis Testing
 
 This directory contains systematic testing of pressure-related hypotheses for amyloid clearance changes observed in lumbar puncture studies.
@@ -6,16 +5,6 @@ This directory contains systematic testing of pressure-related hypotheses for am
 ## Overview
 
 The pressure hypothesis posits that lumbar puncture interventions primarily affect transfer rates between compartments due to changes in CSF pressure and flow dynamics. This approach tests which transfer rate parameters are most important for explaining the experimental observations.
-
-## Hypothesis Rationale
-
-Lumbar puncture directly affects CSF pressure and flow through:
-- Reduction in CSF volume and pressure
-- Changes in pressure gradients between compartments
-- Altered CSF flow rates and patterns
-- Modified blood-brain barrier dynamics
-
-These pressure changes may affect the transfer rates of amyloid-beta between brain, CSF, and plasma compartments.
 
 ## Directory Structure
 
@@ -100,16 +89,6 @@ Brain (B) ←→ CSF (C) ←→ Plasma (P)
 - Sleep/wake cycle modulation is maintained
 - Production and clearance parameters remain fixed
 
-## Error Metric
-
-Uses **Weighted RMSE (WRMSE)** to account for experimental uncertainties:
-
-\[
-\text{WRMSE} = \sqrt{\frac{\sum_{i=1}^{n}w_{i}.\left( y_{i} - \hat{y}_i\right)^2}{\sum_{i=1}^{n}w_{i}}}
-\]
-
-Where weights are inversely proportional to experimental standard errors.
-
 ## Analysis Approach
 
 ### Hypothesis Ranking
@@ -120,24 +99,6 @@ Compare different parameter combinations by:
 2. **Parameter Significance**: Which transfer rates show consistent changes
 3. **Biological Plausibility**: Are the changes consistent with pressure effects?
 4. **Dataset Consistency**: Do different studies support the same conclusions?
-
-### Key Questions
-
-1. **Which transfer rates are most affected by lumbar puncture?**
-   - Brain-to-CSF transfer (`r_bc`)
-   - Brain-to-plasma transfer (`r_bp`)
-   - CSF-to-plasma transfer (`r_cp`)
-   - Plasma clearance (`r_p`)
-
-2. **Are the changes consistent across datasets?**
-   - Blattner et al., 2020
-   - Lucey et al., 2018
-   - Liu et al., 2022
-
-3. **What are the biological implications?**
-   - CSF flow changes
-   - Blood-brain barrier effects
-   - Systemic clearance alterations
 
 ## Expected Results
 
@@ -156,25 +117,6 @@ Based on pressure dynamics, we expect:
 - **Systemic effects**: Changes in `r_p`
 - **Interaction effects**: How different transfer rates work together
 
-## Biological Mechanisms
-
-### CSF Pressure Effects
-
-- **Reduced CSF pressure**: May decrease brain-to-CSF transfer
-- **Altered pressure gradients**: May affect CSF-to-plasma exchange
-- **Flow rate changes**: May modify transfer kinetics
-
-### Blood-Brain Barrier Effects
-
-- **Pressure-induced changes**: May affect brain-to-plasma transfer
-- **Barrier integrity**: May influence transfer rates
-- **Vascular dynamics**: May affect clearance pathways
-
-### Systemic Effects
-
-- **Plasma clearance**: May be indirectly affected by pressure changes
-- **Circulatory changes**: May influence systemic amyloid removal
-
 ## Output Structure
 
 Each test generates:
@@ -183,19 +125,3 @@ Each test generates:
 - **Fit quality**: WRMSE and other error metrics
 - **Model predictions**: Simulated concentration profiles
 - **Visualization**: Plots comparing model to experimental data
-
-## Comparison with Other Hypotheses
-
-Compare pressure hypothesis results with:
-
-- **Sleep hypothesis**: Are pressure effects more important than sleep effects?
-- **Combined hypothesis**: Do pressure and sleep effects interact?
-- **Normal sleep-wake fitting**: How do lumbar puncture effects compare to normal conditions?
-
-## Notes
-
-- Each parameter combination is tested with multiple optimization runs
-- Results are compared systematically across all combinations
-- Biological interpretation guides hypothesis selection
-- Statistical significance is assessed through error metrics and parameter consistency
-- Pressure effects are expected to be more immediate than sleep effects 
