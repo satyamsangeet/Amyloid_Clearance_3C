@@ -9,13 +9,11 @@ The global fitting approach optimizes model parameters by fitting to multiple ex
 - Lucey et al., 2018 (CSF concentration data) 
 - Liu et al., 2022 (CSF and plasma concentration data)
 
-This approach provides more robust parameter estimates by leveraging information from multiple studies.
-
 ## Scripts
 
 ### Main Scripts
 
-- **`main.m`**: Main entry point that orchestrates the global fitting process
+- **`main.m`**: Main script that combines the global fitting process
 - **`model.m`**: Implements the three-compartment ODE system
 - **`objective_function.m`**: Calculates the objective function (NRMSE) for optimization
 - **`load_data.m`**: Loads and processes experimental data from CSV files
@@ -81,16 +79,6 @@ The model optimizes 10 parameters:
 | `sigma_A` | Sleep scaling for production | - | [0.7, 0.9] |
 | `r_p` | Plasma clearance rate (wake) | /hr | [0.23, 0.34] |
 
-## Error Metric
-
-The optimization uses **Normalized Root Mean Square Error (NRMSE)**:
-
-\[
-\text{NRMSE} = \frac{\text{RMSE}}{\text{range}(y)}
-\]
-
-This metric normalizes the error by the range of experimental data, making it suitable for comparing fits across different datasets with different scales.
-
 ## Output
 
 ### Files Generated
@@ -118,13 +106,6 @@ The `final_results.mat` file contains:
 The script automatically generates:
 - Parameter space exploration plots showing the relationship between each parameter and the objective function
 - CSV files for further analysis in other tools
-
-## Notes
-
-- The model simulates 100 days to reach steady state before extracting the 36-hour experimental window
-- Sleep/wake cycles are modeled as 16-hour wake (8:00-24:00) and 8-hour sleep (0:00-8:00)
-- Initial conditions: Brain=0, CSF=600, Plasma=15.5 pg/ml
-- Time step for integration: 0.01 hours
 
 ## Troubleshooting
 
