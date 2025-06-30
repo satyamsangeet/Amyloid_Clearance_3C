@@ -1,4 +1,3 @@
-
 # Sleep Hypothesis Testing
 
 This directory contains systematic testing of sleep-related hypotheses for amyloid clearance changes observed in lumbar puncture studies.
@@ -6,16 +5,6 @@ This directory contains systematic testing of sleep-related hypotheses for amylo
 ## Overview
 
 The sleep hypothesis posits that lumbar puncture interventions primarily affect sleep-related parameters in the three-compartment amyloid clearance model. This approach tests which sleep scaling parameters are most important for explaining the experimental observations.
-
-## Hypothesis Rationale
-
-Sleep is known to significantly affect amyloid-beta clearance through:
-- Changes in CSF flow dynamics
-- Altered brain metabolic activity
-- Modified glymphatic system function
-- Changes in blood-brain barrier permeability
-
-Lumbar puncture may affect sleep patterns or sleep quality, leading to changes in these sleep-dependent processes.
 
 ## Directory Structure
 
@@ -98,88 +87,11 @@ All tests use the same three-compartment model with sleep/wake modulation:
 Brain (B) ←→ CSF (C) ←→ Plasma (P)
 ```
 
-**Sleep/Wake Cycle**:
-- Wake: 16 hours (8:00-24:00)
-- Sleep: 8 hours (0:00-8:00)
-
-**Parameter Modulation**:
-- Wake parameters: Base values
-- Sleep parameters: Base values × sleep scaling factors
-
-## Error Metric
-
-Uses **Weighted RMSE (WRMSE)** to account for experimental uncertainties:
-
-\[
-\text{WRMSE} = \sqrt{\frac{\sum_{i=1}^{n}w_{i}.\left( y_{i} - \hat{y}_i\right)^2}{\sum_{i=1}^{n}w_{i}}}
-\]
-
-Where weights are inversely proportional to experimental standard errors.
-
-## Analysis Approach
-
-### Hypothesis Ranking
-
-Compare different parameter combinations by:
-
-1. **Overall Fit Quality**: Lower WRMSE indicates better fit
-2. **Parameter Significance**: Which parameters show consistent changes
-3. **Biological Plausibility**: Are the changes consistent with known sleep effects?
-4. **Dataset Consistency**: Do different studies support the same conclusions?
-
-### Key Questions
-
-1. **Which sleep parameters are most affected by lumbar puncture?**
-   - Production scaling (`sigma_A`)
-   - Transfer rate scaling (`sigma_bc`, `sigma_bp`, `sigma_cp`)
-   - Clearance scaling (`sigma_p`)
-
-2. **Are the changes consistent across datasets?**
-   - Blattner et al., 2020
-   - Lucey et al., 2018
-   - Liu et al., 2022
-
-3. **What are the biological implications?**
-   - Sleep quality effects
-   - CSF flow changes
-   - Metabolic alterations
-
-## Expected Results
-
-### Best-Fitting Hypotheses
-
-Based on biological knowledge, we expect:
-
-1. **`sigma_bc` and `sigma_cp`**: Most likely to be affected (CSF flow changes)
-2. **`sigma_A`**: May be affected (sleep affects metabolism)
-3. **`sigma_p`**: Less likely to be affected (systemic clearance)
-
-### Parameter Patterns
-
-- **Consistent changes**: Parameters that show similar effects across datasets
-- **Dataset-specific effects**: Parameters that vary between studies
-- **Interaction effects**: How different parameters work together
-
 ## Output Structure
 
 Each test generates:
 
 - **Parameter estimates**: Optimized values for tested parameters
-- **Fit quality**: WRMSE and other error metrics
+- **Fit quality**: NRMSE and other error metrics
 - **Model predictions**: Simulated concentration profiles
 - **Visualization**: Plots comparing model to experimental data
-
-## Comparison with Other Hypotheses
-
-Compare sleep hypothesis results with:
-
-- **Pressure hypothesis**: Are sleep effects more important than pressure effects?
-- **Combined hypothesis**: Do sleep and pressure effects interact?
-- **Normal sleep-wake fitting**: How do lumbar puncture effects compare to normal sleep?
-
-## Notes
-
-- Each parameter combination is tested with multiple optimization runs
-- Results are compared systematically across all combinations
-- Biological interpretation guides hypothesis selection
-- Statistical significance is assessed through error metrics and parameter consistency 
