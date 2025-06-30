@@ -39,15 +39,6 @@ Lumbar_puncture_fitting/
 └── README.md                      # This file
 ```
 
-## Experimental Context
-
-Lumbar puncture studies measure amyloid-beta concentrations in CSF and plasma before and after interventions that:
-- Alter CSF pressure
-- Modify sleep patterns
-- Change CSF flow dynamics
-
-These studies help identify which physiological mechanisms are most important for amyloid clearance.
-
 ## Hypothesis Testing Approach
 
 ### Sleep Hypothesis (`sleep_hypothesis/`)
@@ -160,23 +151,6 @@ All hypothesis tests use the same three-compartment model:
 Brain (B) ←→ CSF (C) ←→ Plasma (P)
 ```
 
-**Key Features**:
-- Sleep/wake cycle modulation
-- Parameter optimization for specific hypotheses
-- Comparison with experimental data
-- Error metric: Weighted RMSE (WRMSE) for data with uncertainties
-
-## Error Metrics
-
-### Weighted RMSE (WRMSE)
-Used for lumbar puncture fitting due to experimental uncertainties:
-
-\[
-\text{WRMSE} = \sqrt{\frac{\sum_{i=1}^{n}w_{i}.\left( y_{i} - \hat{y}_i\right)^2}{\sum_{i=1}^{n}w_{i}}}
-\]
-
-Where weights are inversely proportional to experimental uncertainties.
-
 ## Output Structure
 
 Each hypothesis test generates:
@@ -184,25 +158,3 @@ Each hypothesis test generates:
 - Model fits to experimental data
 - Error metrics and statistics
 - Visualization plots
-
-## Analysis Approach
-
-### Hypothesis Ranking
-Compare different hypotheses by:
-- Overall fit quality (WRMSE)
-- Parameter significance
-- Biological plausibility
-- Consistency across datasets
-
-### Key Questions
-1. Which parameters are most affected by lumbar puncture?
-2. Are sleep-related or pressure-related changes more important?
-3. How do different datasets support different hypotheses?
-4. What are the implications for amyloid clearance mechanisms?
-
-## Notes
-
-- Each hypothesis test uses multiple optimization runs for robustness
-- Results are compared across different parameter combinations
-- Biological interpretation guides hypothesis selection
-- Statistical significance is assessed through error metrics 
