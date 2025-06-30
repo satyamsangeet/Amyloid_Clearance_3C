@@ -80,32 +80,14 @@ Experimental data from published studies are provided in CSV format under `Lumba
 - `liu2022_plasma_concentration.csv`
 ---
 
-## Error Metrics
-
-### Normalized RMSE (NRMSE)
-Used when all data points are treated equally (e.g., Huang et al., 2012). Formula:
-
-\[
-\text{NRMSE} = \frac{\text{RMSE}}{\text{range}(y)} \text{ or } \frac{\text{RMSE}}{\mu_y}
-\]
-
-### Weighted RMSE (WRMSE)
-Used when data points have associated uncertainties (e.g., Liu et al., 2022). Formula:
-
-\[
-\text{WRMSE} = \sqrt{\frac{\sum_{i=1}^{n}w_{i}.\left( y_{i} - \hat{y}_i\right)^2}{\sum_{i=1}^{n}w_{i}}}
-\]
-
----
-
 ## Optimized Model Parameters
 
 ### Three Compartment Model (Brain, CSF, Plasma)
 
 | **Parameter** | **Liu Fit** | **Huang Fit** | **Combined Fit** |
 |---------------|-------------|---------------|------------------|
-| a             | 1.00        | 2.95          | 1.49             |
-| b             | 1.60        | 4.39          | 1.49             |
+| A             | 1.00        | 2.95          | 1.49             |
+| $\sigma_{A}$             | 1.60        | 4.39          | 1.49             |
 | c             | 1.53        | 4.01          | 1.47             |
 | A_wake        | 22.06       | 21.07         | 23.5             |
 | A_sleep       | 0.8*A_wake  | 0.8*A_wake    | 0.8*A_wake       |
