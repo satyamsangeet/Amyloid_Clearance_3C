@@ -31,16 +31,16 @@ The script optimizes 10 parameters with the same bounds as global fitting:
 
 | Parameter | Description | Units | Bounds |
 |-----------|-------------|-------|--------|
-| `r_bc` | Brain-to-CSF transfer rate (wake) | /hr | [0.75, 2.5] |
-| `r_bp` | Brain-to-plasma transfer rate (wake) | /hr | [0.01, 1] |
-| `r_cp` | CSF-to-plasma transfer rate (wake) | /hr | [0.001, 3] |
-| `sigma_bc` | Sleep scaling for brain-to-CSF | - | [1, 4] |
+| `r_bc` | Brain-to-CSF transfer rate (wake) | /hr | [0.01, 0.25] |
+| `r_bp` | Brain-to-plasma transfer rate (wake) | /hr | [0.01, 0.25] |
+| `r_cp` | CSF-to-plasma transfer rate (wake) | /hr | [0, 0.1] |
+| `sigma_bc` | Sleep scaling for brain-to-CSF | - | [1, 7] |
 | `sigma_bp` | Sleep scaling for brain-to-plasma | - | [1, 7] |
 | `sigma_cp` | Sleep scaling for CSF-to-plasma | - | [1, 7] |
 | `sigma_p` | Sleep scaling for plasma clearance | - | [1, 7] |
-| `A` | Amyloid production rate (wake) | pg/ml/hr | [9, 14] |
-| `sigma_A` | Sleep scaling for production | - | [0.7, 0.9] |
-| `r_p` | Plasma clearance rate (wake) | /hr | [0.23, 0.34] |
+| `A` | Amyloid production rate (wake) | pg/ml/hr | [0, 111] |
+| `sigma_A` | Sleep scaling for production | - | [0, 0.99] |
+| `r_p` | Plasma clearance rate (wake) | /hr | [0, 0.6] |
 
 ## Usage
 
