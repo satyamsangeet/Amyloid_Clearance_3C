@@ -56,20 +56,20 @@ end
 
 % Default parameters
 params = struct();
-params.A = 11.724;
-params.sigma_A = 0.731;
-params.r_bc = 1.319;
-params.sigma_bc = 1.185;
-params.r_cp = 0.00545; 
-params.sigma_cp = 4.173;
-params.r_bp = 0.242;
-params.sigma_bp = 6.607;
-params.r_p = 0.317;
-params.sigma_p = 4.028;
+params.A = 16.203;
+params.sigma_A = 0.772;
+params.r_bc = 0.038;
+params.sigma_bc = 1.131;
+params.r_cp = 0.00537; 
+params.sigma_cp = 6.100;
+params.r_bp = 0.014;
+params.sigma_bp = 1.768;
+params.r_p = 0.427;
+params.sigma_p = 4.253;
 
 % Generate variation
 num_variations = 20;
-default_value = 4.028; 
+default_value = 4.253; 
 
 % array
 sigma_p_values = linspace(0, 10, num_variations);
