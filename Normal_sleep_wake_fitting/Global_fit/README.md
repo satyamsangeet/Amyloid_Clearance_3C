@@ -11,19 +11,10 @@ The global fitting approach optimizes model parameters by fitting to multiple ex
 
 ## Scripts
 
-### Main Scripts
-
 - **`main.m`**: Main script that combines the global fitting process
-- **`model.m`**: Implements the three-compartment ODE system
-- **`objective_function.m`**: Calculates the objective function (NRMSE) for optimization
-- **`load_data.m`**: Loads and processes experimental data from CSV files
-
-### Supporting Scripts
-
-- **`euler_solver.m`**: Numerical solver using Euler method for ODE integration
-- **`plot_parameter_space.m`**: Visualizes parameter space exploration results
-- **`save_results.m`**: Saves optimization results and generates start points
-- **`output_function.m`**: Callback function for optimization progress tracking
+- **`nonlinear_constraints.m`**: applies nonlinear constraints
+- **`euler.m`**: euler method
+- **`config.m`**: user defined lower and upper bounds for parameters
 
 ## Usage
 
@@ -55,12 +46,12 @@ The global fitting approach optimizes model parameters by fitting to multiple ex
 
 ### Configuration
 
-The optimization can be configured in `main.m`:
+The optimization can be configured in `config.m` and `main.m`:
 
-- **`num_starts`**: Number of optimization runs from different starting points (default: 20)
-- **`initial_guess`**: Initial parameter guess
-- **`lb`, `ub`**: Lower and upper bounds for parameters
-- **Optimization options**: Algorithm, tolerances, maximum iterations
+- **`num_starts`**: Number of optimization runs from different starting points (default: 20) set in `main.m`
+- **`initial_guess`**: Initial parameter guess in `config.m`
+- **`lb`, `ub`**: Lower and upper bounds for parameters in `config.m`
+- **Optimization options**: Algorithm, tolerances, maximum iterations in `main.m`
 
 ## Model Parameters
 
@@ -83,7 +74,7 @@ The model optimizes 10 parameters:
 
 ### Files Generated
 
-1. **`global_all_params/`** directory containing:
+1. **`global_fit1/`** directory containing:
    - `run_X_results.mat`: Individual optimization results for each run
    - `final_results.mat`: Summary of all optimization runs
    - `parameter_space_X.csv`: Parameter space exploration data for each parameter
