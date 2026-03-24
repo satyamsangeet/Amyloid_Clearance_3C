@@ -12,24 +12,29 @@ The normal sleep-wake fitting approach analyzes how amyloid-beta concentrations 
 Normal_sleep_wake_fitting/
 ├── Global_fit/                    # Global optimization across all datasets
 │   ├── main.m                     # Main global fitting script
-│   ├── model.m                    # Three-compartment ODE model
-│   ├── objective_function.m       # NRMSE objective function
-│   ├── load_data.m               # Data loading and processing
-│   ├── euler_solver.m            # Numerical integration
-│   ├── plot_parameter_space.m    # Parameter space visualization
-│   ├── save_results.m            # Results saving and start point generation
+│   ├── config.m               # Data loading
+│   ├── euler.m            # Numerical integration
+│   ├── nonlinear_constraints.m    # Non linear constraints
 │   └── README.md                 # Detailed documentation
 ├── Individual_fits/               # Individual dataset fitting
 │   ├── Blattner/                 # Blattner et al., 2020 fitting
-│   │   ├── blattner_fit.m        # Individual Blattner fit script
-│   │   └── readme.md             # Blattner-specific documentation
-│   ├── Liu/                      # Liu et al., 2022 fitting
-│   │   ├── liu_fit.m             # Individual Liu fit script (CSF + Plasma)
-│   │   └── readme.md             # Liu-specific documentation
-│   ├── Lucey/                    # Lucey et al., 2018 fitting
-│   │   ├── lucey_fit.m           # Individual Lucey fit script
-│   │   └── readme.md             # Lucey-specific documentation
-│   └── readme.md                 # Individual fits overview
+│   │   ├── main.m        # Individual Blattner fit script
+|   |   ├── config.m        
+|   |   ├── euler.m        
+|   |   ├── nonlinear_constraints.m
+│   │   └── readme.md             
+│   ├── Lucey/                 # Lucey et al., 2018 fitting
+│   │   ├── main.m        # Individual Lucey fit script
+|   |   ├── config.m        
+|   |   ├── euler.m        
+|   |   ├── nonlinear_constraints.m
+│   │   └── readme.md             
+│   ├── Liu/                 # Liu et al., 2023 fitting
+│   │   ├── main.m        # Individual Liu fit script
+|   |   ├── config.m        
+|   |   ├── euler.m        
+|   |   ├── nonlinear_constraints.m
+│   │   └── readme.md             
 └── README.md                     # This file
 ```
 
@@ -99,7 +104,7 @@ lucey_fit
 ## Output Structure
 
 ### Global Fitting Output
-- `global_all_params/` directory with:
+- `global_fit1/` directory with:
   - Individual run results (`run_X_results.mat`)
   - Final summary (`final_results.mat`)
   - Parameter space data (`parameter_space_X.csv`)
@@ -107,7 +112,7 @@ lucey_fit
 
 ### Individual Fitting Output
 Each individual fit generates:
-- `global_all_params/` directory with similar structure
+- `{individual_fit_name}/` directory with similar structure
 - Dataset-specific parameter estimates
 - Parameter space exploration plots
 
@@ -117,13 +122,13 @@ All fitting approaches use the same parameter bounds:
 
 | Parameter | Description | Units | Bounds |
 |-----------|-------------|-------|--------|
-| `r_bc` | Brain-to-CSF transfer rate (wake) | /hr | [0.75, 2.5] |
-| `r_bp` | Brain-to-plasma transfer rate (wake) | /hr | [0.01, 1] |
-| `r_cp` | CSF-to-plasma transfer rate (wake) | /hr | [0.001, 3] |
-| `sigma_bc` | Sleep scaling for brain-to-CSF | - | [1, 4] |
+| `r_bc` | Brain-to-CSF transfer rate (wake) | /hr | [0.01, 0.25] |
+| `r_bp` | Brain-to-plasma transfer rate (wake) | /hr | [0.01, 0.25] |
+| `r_cp` | CSF-to-plasma transfer rate (wake) | /hr | [0, 0.1] |
+| `sigma_bc` | Sleep scaling for brain-to-CSF | - | [1, 7] |
 | `sigma_bp` | Sleep scaling for brain-to-plasma | - | [1, 7] |
 | `sigma_cp` | Sleep scaling for CSF-to-plasma | - | [1, 7] |
 | `sigma_p` | Sleep scaling for plasma clearance | - | [1, 7] |
-| `A` | Amyloid production rate (wake) | pg/ml/hr | [9, 14] |
-| `sigma_A` | Sleep scaling for production | - | [0.7, 0.9] |
-| `r_p` | Plasma clearance rate (wake) | /hr | [0.23, 0.34] |
+| `A` | Amyloid production rate (wake) | pg/ml/hr | [0, 111] |
+| `sigma_A` | Sleep scaling for production | - | [0, 0.99] |
+| `r_p` | Plasma clearance rate (wake) | /hr | [0, 0.6] |
