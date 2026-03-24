@@ -17,16 +17,16 @@ set(groot, 'DefaultAxesTickDir', 'out');
 set(groot, 'DefaultAxesTickDirMode', 'manual');
 
 function dydt_n = model_global_wrmse(t, y)
-    A = 11.724;
-    sigma_A = 0.731;
-    r_bc = 1.319;
-    sigma_bc = 1.185;
-    r_cp = 0.00545;
-    sigma_cp = 4.173;
-    r_bp = 0.242;
-    sigma_bp = 6.607;
-    r_p = 0.317;
-    sigma_p = 4.028;
+    A = 16.203;
+    sigma_A = 0.772;
+    r_bc = 0.038;
+    sigma_bc = 1.131;
+    r_cp = 0.00537;
+    sigma_cp = 6.100;
+    r_bp = 0.014;
+    sigma_bp = 1.768;
+    r_p = 0.427;
+    sigma_p = 4.253;
     sw_cycle = (mod(t, 24) >= 8 && mod(t, 24) < 24);
 
     dydt_n = zeros(3, 1);
@@ -54,7 +54,7 @@ function [t, w] = euler(F, endpoints, initial_conditions, ts)
 end
 
 
-[t_100days_gwrmse, sol_100days_gwrmse] = euler(@(t,y) model_global_wrmse(t,y), [0, 24*100], [1,600,15.5], 0.01);
+[t_100days_gwrmse, sol_100days_gwrmse] = euler(@(t,y) model_global_wrmse(t,y), [0, 24*100], [0,600,15.5], 0.01);
 
 % Plot
 figure;
