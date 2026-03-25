@@ -20,13 +20,14 @@ All commands below assume your shell’s current working directory is **`combine
 You need to make the bash script (.sh) executable by doing
 ```
 chmod +x run_all.sh
+chmod +x run_plot_scripts.sh
 ```
 
 1. `./run_all.sh`  
-2. `python hypothesis_replace_params1.py`  
-3. `python hypothesis_replace_params2.py`  
+2. `python3 hypothesis_replace_params1.py`  
+3. `python3 hypothesis_replace_params2.py`  
 4. `./run_plot_scripts.sh`  
-5. `python copy_model_files_to_sim_files.py`  
+5. `python3 copy_model_files_to_sim_files.py`  
 
 After step 5, the `sim_files/` tree here is ready for downstream use.
 
