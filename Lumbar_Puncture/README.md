@@ -1,14 +1,14 @@
 # Final hypothesis testing
 
-This directory bundles three parallel hypothesis families. Each family lives in its own folder and contains multiple **sub-hypothesis** folders (one ablation / variant each). The workflow is the same in every family: fit everything, refresh plotting MATLAB with baseline and best-fit parameters, regenerate simulation CSVs, copy them into `sim_files/`, then compute AICc at the repository root.
+This directory bundles three parallel hypothesis. Each hypothesis is in its own folder and contains multiple **sub-hypothesis** folders (one ablation / variant each). The workflow is the same in every hypothesis: fit everything, refresh plotting MATLAB with baseline and best-fit parameters, regenerate simulation CSVs, copy them into `sim_files/`, then compute AICc at the repository root.
 
 ## Layout
 
 | Folder | Role |
 |--------|------|
-| `combined_hypothesis/` | Combined (multi-compartment) hypotheses |
-| `sleep_hypothesis/` | Sleep-related sigma / exchange hypotheses |
-| `pressure_hypothesis/` | Pressure / RBC–RCP–RBP style hypotheses |
+| `combined_hypothesis/` | Combined hypotheses |
+| `sleep_hypothesis/` | Sleep-related hypotheses |
+| `pressure_hypothesis/` | Pressure hypotheses |
 | `AICC.ipynb` | AICc calculation (run after CSVs are in each `sim_files/`) |
 
 Each hypothesis folder includes:
@@ -22,10 +22,10 @@ Each hypothesis folder includes:
 
 ## End-to-end workflow
 
-Repeat the steps below **inside each** of `combined_hypothesis`, `sleep_hypothesis`, and `pressure_hypothesis` (or only the families you care about), always working from **that folder** as the current directory.
+Repeat the steps below **inside each** of `combined_hypothesis`, `sleep_hypothesis`, and `pressure_hypothesis`, always working from **that folder** as the current directory.
 
 1. **`./run_all.sh`**  
-   Runs every sub-hypothesis’s fitting / batch pipeline (as configured in that family). Wait until it finishes.
+   Runs every sub-hypothesis’s fitting / batch pipeline. Wait until it finishes.
 
 2. **`python hypothesis_replace_params1.py`**  
    Updates **model1** in the plotting `.m` files to the correct **baseline / default** parameter sets (global vs dataset-specific scripts, depending on the file).
@@ -45,5 +45,5 @@ Repeat the steps below **inside each** of `combined_hypothesis`, `sleep_hypothes
 ## Tips
 
 - Run steps 2–5 **after** `run_all.sh` completes so fitted values and outputs match the latest runs.
-- If a step fails for one family, you can still process the others; AICc may need all intended `sim_files/` trees populated consistently.
+- If a step fails for one hypothesis, you can still process the others; AICc may need all intended `sim_files/` trees populated consistently.
 - For command syntax, prerequisites (Python, MATLAB), and family-specific folder lists, see **`README.md` inside each hypothesis folder**.
