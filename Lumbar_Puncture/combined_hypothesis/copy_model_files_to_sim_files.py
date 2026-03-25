@@ -16,6 +16,7 @@ FIT_TYPES = ["global", "blattner", "lucey", "liu"]
 def main():
     base = Path(__file__).parent
     sim_files = base / "sim_files"
+    sim_files.mkdir(exist_ok=True)
 
     total_copied = 0
     total_missing = 0
