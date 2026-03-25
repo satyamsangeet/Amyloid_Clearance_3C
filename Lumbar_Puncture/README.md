@@ -24,6 +24,12 @@ Each hypothesis folder includes:
 
 Repeat the steps below **inside each** of `combined_hypothesis`, `sleep_hypothesis`, and `pressure_hypothesis`, always working from **that folder** as the current directory.
 
+You need to make the bash script (.sh) executable by doing
+```
+chmod +x run_all.sh
+chmod +x run_plot_scripts.sh
+```
+
 1. **`./run_all.sh`**  
    Runs every sub-hypothesis’s fitting / batch pipeline. Wait until it finishes.
 
