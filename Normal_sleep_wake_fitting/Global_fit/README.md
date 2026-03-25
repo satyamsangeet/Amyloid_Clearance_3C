@@ -59,8 +59,8 @@ The model optimizes 10 parameters:
 
 | Parameter | Description | Units | Bounds |
 |-----------|-------------|-------|--------|
-| `r_bc` | Brain-to-CSF transfer rate (wake) | /hr | [0, 0.25] |
-| `r_bp` | Brain-to-plasma transfer rate (wake) | /hr | [0, 0.25] |
+| `r_bc` | Brain-to-CSF transfer rate (wake) | /hr | [0.01, 0.25] |
+| `r_bp` | Brain-to-plasma transfer rate (wake) | /hr | [0.01, 0.25] |
 | `r_cp` | CSF-to-plasma transfer rate (wake) | /hr | [0, 0.1] |
 | `sigma_bc` | Sleep scaling for brain-to-CSF | - | [1, 7] |
 | `sigma_bp` | Sleep scaling for brain-to-plasma | - | [1, 7] |
