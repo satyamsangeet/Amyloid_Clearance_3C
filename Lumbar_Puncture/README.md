@@ -1,4 +1,4 @@
-# Final hypothesis testing (updated bounds)
+# Final hypothesis testing
 
 This directory bundles three parallel hypothesis families. Each family lives in its own folder and contains multiple **sub-hypothesis** folders (one ablation / variant each). The workflow is the same in every family: fit everything, refresh plotting MATLAB with baseline and best-fit parameters, regenerate simulation CSVs, copy them into `sim_files/`, then compute AICc at the repository root.
 
