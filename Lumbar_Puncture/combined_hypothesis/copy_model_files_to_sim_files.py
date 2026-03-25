@@ -1,22 +1,40 @@
 """
 copy_to_sim_files.py
-
 For each ablation folder (rbc, rcp, rbc_rcp, etc.):
   - Copies {fit}_model2_{folder}.csv  →  sim_files/{fit}/
-
 Run from the parent directory containing both the ablation folders and sim_files/.
 """
-
 import shutil
 from pathlib import Path
 
-FOLDERS = ["rbc_rcp_all_sigma","rbc_rcp_rbp_sbc_scp_sbp","rbc_rcp_sbc_scp","rbc_sbc_scp","rbc_sbc_scp_sp","rbc_scp_sp","rcp_sbc_scp"]
+FOLDERS = [
+    "rbc_rcp_all_sigma",
+    "rbc_rcp_rbp_sbc_scp_sbp",
+    "rbc_rcp_sbc_scp",
+    "rbc_sbc_scp",
+    "rbc_sbc_scp_sp",
+    "rbc_scp_sp",
+    "rcp_sbc_scp",
+]
+
 FIT_TYPES = ["global", "blattner", "lucey", "liu"]
+
+SUB_DIRS = [
+    "blattner", "blattner_preprocess",
+    "global", "global_preprocess",
+    "liu", "liu_preprocess",
+    "lucey", "lucey_preprocess",
+]
 
 def main():
     base = Path(__file__).parent
+
+    # Create sim_files and all subdirectories upfront
     sim_files = base / "sim_files"
     sim_files.mkdir(exist_ok=True)
+    for sub in SUB_DIRS:
+        (sim_files / sub).mkdir(exist_ok=True)
+    print(f"[READY] sim_files/ and subdirectories ensured at {sim_files}")
 
     total_copied = 0
     total_missing = 0
@@ -28,7 +46,6 @@ def main():
             continue
 
         print(f"\n── {folder_name} ──")
-
         for fit in FIT_TYPES:
             filename = f"{fit}_model2_{folder_name}.csv"
             src = src_folder / filename
@@ -37,11 +54,6 @@ def main():
 
             if not src.exists():
                 print(f"  [MISSING] {src}")
-                total_missing += 1
-                continue
-
-            if not dst_dir.exists():
-                print(f"  [MISSING DEST DIR] {dst_dir} — skipping {filename}.")
                 total_missing += 1
                 continue
 
