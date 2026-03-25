@@ -45,7 +45,7 @@ function dydt_n = model(t, y, params)
 end
 
 % Obj func
-function [total_error] = objective_function_fmincon(params, exp_csf1, exp_csf2, exp_csf3, exp_plasma1, fitting_error0)
+function [total_error] = objective_function_fmincon(params, exp_csf3, exp_plasma1, fitting_error0)
     % Run simulation
     [t, sol] = euler(@(t,y) model(t,y,params), [0, 24*100], [800,600,20], 0.01);
     
