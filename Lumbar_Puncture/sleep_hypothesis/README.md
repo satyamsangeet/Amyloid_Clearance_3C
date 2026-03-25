@@ -17,6 +17,12 @@ Sub-hypotheses live as immediate subfolders of this directory (e.g. `all_sigma`,
 
 Use **`sleep_hypothesis/`** as the current working directory.
 
+You need to make the bash script (.sh) executable by doing
+```
+chmod +x run_all.sh
+chmod +x run_plot_scripts.sh
+```
+
 1. `./run_all.sh`  
 2. `python hypothesis_replace_params1.py`  
 3. `python hypothesis_replace_params2.py`  
