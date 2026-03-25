@@ -17,6 +17,11 @@ Sub-hypotheses live as immediate subfolders of this directory (e.g. `rbc_rcp_all
 
 All commands below assume your shell’s current working directory is **`combined_hypothesis/`** (the folder that contains these scripts).
 
+You need to make the bash script (.sh) executable by doing
+```
+chmod +x run_all.sh
+```
+
 1. `./run_all.sh`  
 2. `python hypothesis_replace_params1.py`  
 3. `python hypothesis_replace_params2.py`  
