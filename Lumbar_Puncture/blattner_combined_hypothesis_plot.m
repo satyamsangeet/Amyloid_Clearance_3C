@@ -1,20 +1,21 @@
 function dydt_n = model1(t, y, params)
-    A = 95.333;
-    sigma_A = 0.651;
-    sigma_p = 5.055;
-    sigma_bp = 2.58;
-    sigma_bc = 1.909;
-    sigma_cp = 4.111;
-    r_bc = 0.03;
-    r_cp = 0.0273;
+    A = 16.203;
+    sigma_A = 0.772;
+    sigma_p = 4.253;
+    sigma_bp = 1.768;
+    sigma_bc = 1.131;
+    sigma_cp = 6.1;
+    r_bp = 0.014;
     
     % Switch between sleep and wake states
     if(t>=2336 && t<2372)
-    	r_bp = 0.013;
-    	r_p = 0.299;
+    	r_bc = 0.059;
+    	r_cp = 0.00425;
+    	r_p = 0.361;
     else
-    	r_bp = 0.033;
-    	r_p = 0.3;
+    	r_bc = 0.038;
+    	r_cp = 0.00537;
+    	r_p = 0.427;
     end
     
     % Switch
@@ -28,23 +29,22 @@ function dydt_n = model1(t, y, params)
 end
 
 function dydt_n = model2(t, y, params)
-    A = 95.333;
-    r_p = 0.3;
-    r_bp = 0.033;
-    r_bc = 0.03;
-    r_cp = 0.0273;
-    sigma_A = 0.651;
-    sigma_bp = 2.58;
+    A = 16.203;
+    r_p = 0.427;
+    r_bp = 0.014;
+    r_bc = 0.038;
+    r_cp = 0.00537;
+    sigma_A = 0.772;
+    sigma_bp = 1.768;
+    sigma_bc = 1.131;
     
     % Switch between sleep and wake states
     if(t>=2336 && t<2372)
-    	sigma_bc = 0.486;
-    	sigma_cp = 0.858;
-    	sigma_p = 2.538;
+    	sigma_cp = 2.861;
+        sigma_p = 2.519;
     else
-    	sigma_bc = 1.909;
-        sigma_cp = 4.111;
-        sigma_p = 5.055;
+    	sigma_cp = 6.1;
+        sigma_p = 4.253;
     end
     
     % Switch
@@ -58,23 +58,23 @@ function dydt_n = model2(t, y, params)
 end
 
 function dydt_n = model3(t, y, params)
-    A = 95.333;
-    r_p = 0.300;
-    sigma_A = 0.651;
-    sigma_p = 5.055;
-    r_bp = 0.033;
-    sigma_bp = 2.580;
-    r_cp = 0.0273;
+    A = 16.203;
+    r_p = 0.427;
+    sigma_A = 0.772;
+    r_bp = 0.014;
+    sigma_bp = 1.768;
+    r_cp = 0.00537;
+    sigma_bc = 1.131;
     
     % Switch between sleep and wake states
     if(t>=2336 && t<2372)
-    	r_bc = 0.030;
-    	sigma_bc = 0.486;
-    	sigma_cp = 0.858;
+    	r_bc = 0.052;
+    	sigma_cp = 3.733;
+    	sigma_p = 2.922;
     else
-    	r_bc = 0.030;
-    	sigma_bc = 1.909;
-    	sigma_cp = 4.111;
+    	r_bc = 0.038;
+    	sigma_cp = 6.1;
+    	sigma_p = 4.253;
     end
     
     % Switch
