@@ -1,20 +1,21 @@
 function dydt_n = model1(t, y, params)
-    A = 84.234;
-    sigma_A = 0.582;
-    sigma_p = 4.091;
-    sigma_bp = 3.189;
-    sigma_bc = 2.125;
-    sigma_cp = 4.076;
-    r_bc = 0.056;
-    r_cp = 0.022;
+    A = 16.203;
+    sigma_A = 0.772;
+    sigma_p = 4.253;
+    sigma_bp = 1.768;
+    sigma_bc = 1.131;
+    sigma_cp = 6.1;
+    r_bp = 0.014;
     
     % Switch between sleep and wake states
     if(t>=2336 && t<2372)
-    	r_bp = 0.032;
-    	r_p = 0.300;
+    	r_bc = 0.059;
+    	r_cp = 0.00425;
+    	r_p = 0.361;
     else
-    	r_bp = 0.048;
-    	r_p = 0.299;
+    	r_bc = 0.038;
+    	r_cp = 0.00537;
+    	r_p = 0.427;
     end
     
     % Switch
@@ -28,23 +29,22 @@ function dydt_n = model1(t, y, params)
 end
 
 function dydt_n = model2(t, y, params)
-    A = 84.234;
-    r_p = 0.299;
-    r_bp = 0.048;
-    r_bc = 0.056;
-    r_cp = 0.022;
-    sigma_A = 0.582;
-    sigma_bp = 3.189;
+    A = 16.203;
+    r_p = 0.427;
+    r_bp = 0.014;
+    r_bc = 0.038;
+    r_cp = 0.00537;
+    sigma_A = 0.772;
+    sigma_bp = 1.768;
+    sigma_bc = 1.131;
     
     % Switch between sleep and wake states
     if(t>=2336 && t<2372)
-    	sigma_bc = 0.442;
-    	sigma_cp = 1.349;
-    	sigma_p = 0.908;
+    	sigma_cp = 2.861;
+        sigma_p = 2.519;
     else
-    	sigma_bc = 2.125;
-        sigma_cp = 4.076;
-        sigma_p = 4.091;
+    	sigma_cp = 6.1;
+        sigma_p = 4.253;
     end
     
     % Switch
@@ -58,23 +58,23 @@ function dydt_n = model2(t, y, params)
 end
 
 function dydt_n = model3(t, y, params)
-    A = 84.234;
-    r_p = 0.299;
-    sigma_A = 0.582;
-    sigma_p = 4.091;
-    r_bp = 0.048;
-    sigma_bp = 3.189;
-    r_cp = 0.022;
+    A = 16.203;
+    r_p = 0.427;
+    sigma_A = 0.772;
+    r_bp = 0.014;
+    sigma_bp = 1.768;
+    r_cp = 0.00537;
+    sigma_bc = 1.131;
     
     % Switch between sleep and wake states
     if(t>=2336 && t<2372)
-    	r_bc = 0.056;
-    	sigma_bc = 0.438;
-    	sigma_cp = 1.344;
+    	r_bc = 0.052;
+    	sigma_cp = 3.733;
+    	sigma_p = 2.922;
     else
-    	r_bc = 0.056;
-    	sigma_bc = 2.125;
-    	sigma_cp = 4.076;
+    	r_bc = 0.038;
+    	sigma_cp = 6.1;
+    	sigma_p = 4.253;
     end
     
     % Switch
@@ -132,8 +132,8 @@ end
 %                    'VariableNames', {'Time', 'Compartment_1', 'Compartment_2', 'Compartment_3'});
 
 % Write tables to CSV files
-%writetable(model1_table, 'lucey_model1_h8.csv');
-%writetable(model2_table, 'lucey_model2_h8.csv');
+%writetable(model1_table, 'blattner_model1_h8.csv');
+%writetable(model2_table, 'blattner_model2_h8.csv');
 
 % For backward compatibility, keep existing cdata_36hours extraction
 cdata_36hours1_global1 = sol_100days_global1(233600:237200, 2);
@@ -178,9 +178,9 @@ x1 = [time_exp1; flipud(time_exp1)];
 inBetween1 = [csf_lsd1; flipud(csf_usd1)];
 fill(x1, inBetween1, [0.7 0.7 0.7], 'FaceAlpha', 0.3, 'EdgeColor', 'k', 'HandleVisibility', 'off');
 hold on;
-plot(x, cdata_36hours1_global1, 'LineWidth', 2.0, 'Color', 'r', 'DisplayName', sprintf('B (NRMSE: %.3f)', wrmse1_global1));
-plot(x, cdata_36hours1_global2, 'LineWidth', 8.0, 'Color', 'b', 'DisplayName', sprintf('P (Lu: %.3f)', wrmse1_global2));
-plot(x, cdata_36hours1_global3, 'LineWidth', 5.0, 'Color', 'm', 'DisplayName', sprintf('S (Li: %.3f)', wrmse1_global3));
+plot(x, cdata_36hours1_global1, 'LineWidth', 2.0, 'Color', 'r', 'DisplayName', sprintf('NSW (NRMSE: %.3f)', wrmse1_global1));
+plot(x, cdata_36hours1_global2, 'LineWidth', 8.0, 'Color', 'b', 'DisplayName', sprintf('P (NRMSE: %.3f)', wrmse1_global2));
+plot(x, cdata_36hours1_global3, 'LineWidth', 2.0, 'Color', 'm', 'DisplayName', sprintf('S (NRMSE: %.3f)', wrmse1_global3));
 plot(time_exp1, csf_conc_exp1, 'k--', 'LineWidth', 2.0, 'DisplayName', 'Blattner2020 - CSF');
 model_points_global1 = interp1(x, cdata_36hours1_global1, time_exp1);
 model_points_global2 = interp1(x, cdata_36hours1_global2, time_exp1);
