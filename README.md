@@ -21,11 +21,20 @@ The model is used to fit and interpret experimental data from multiple studies, 
 │   ├── sleep_hypothesis/         # Model fits under sleep hypothesis
 │   ├── combined_hypothesis/      # Model fits under combined hypothesis
 │   ├── pressure_hypothesis/      # Model fits under pressure hypothesis
-│   └── ...
 ├── Normal_sleep_wake_fitting/    # Model fitting to normal sleep-wake data
 │   ├── Global_fit/               # Scripts for global model fitting
 │   ├── Individual_fits/          # Individual fits for Blattner, Liu, Lucey datasets
-│   └── ...
+├── Supplementary/    # Model fitting to normal sleep-wake data
+│   ├── FigS1_sensitivity_analysis.py
+│   ├── FigS2_steady_state_response.py
+│   ├── FigS3_sobol_analysis.py
+│   ├── FigS4_residual_analysis.m
+│   ├── FigS5_amyloid_levels.py
+│   ├── FigS6_model_ab40.m
+│   ├── FigS7_ab40_ab42_levels.py
+│   ├── FigS8_ratio_plots.m
+│   ├── FigS9_model_prediction.m
+│   ├── FigS10_pathway_contribution.m
 └── README.md                     # This file
 ```
 
