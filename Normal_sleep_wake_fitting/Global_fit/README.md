@@ -15,6 +15,7 @@ The global fitting approach optimizes model parameters by fitting to multiple ex
 - **`nonlinear_constraints.m`**: applies nonlinear constraints
 - **`euler.m`**: euler method
 - **`config.m`**: user defined lower and upper bounds for parameters
+- **`global_plot.m`**: script to plot the model response against normal sleep wake data
 
 ## Usage
 
