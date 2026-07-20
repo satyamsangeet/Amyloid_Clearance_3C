@@ -34,7 +34,10 @@ Normal_sleep_wake_fitting/
 |   |   ├── config.m        
 |   |   ├── euler.m        
 |   |   ├── nonlinear_constraints.m
-│   │   └── readme.md             
+│   │   └── readme.md
+│   ├── blattner_plot.m                     # Blattner plot
+│   ├── lucey_plot.m                     # Lucey plot
+│   ├── liu_plot.m                     # Liu plot
 └── README.md                     # This file
 ```
 
