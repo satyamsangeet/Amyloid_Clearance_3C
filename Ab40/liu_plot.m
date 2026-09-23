@@ -1,4 +1,3 @@
-% Updated model function to optimize only sigma_bp (a), sigma_cp (b), and rbc (a12_wake)
 function dydt_n = model1(t, y)
     r_bc = 0.038;
     r_bp = 0.014;
@@ -75,7 +74,6 @@ plasma_data_file1 = 'data_wake/liu_plasma_ab40_wake_conc.csv';
 csf_data1 = readtable(csf_data_file1);
 plasma_data1 = readtable(plasma_data_file1);
 
-% Extract data from both plasma files
 time_exp1 = csf_data1.Time;
 csf_conc_exp1 = csf_data1.Concentration;
 plasma_conc_exp1 = plasma_data1.Concentration;
