@@ -110,11 +110,8 @@ end
 [t_100days_global2, sol_100days_global2] = euler(@(t,y) model2(t,y), [0, 24*100], [0,600,15.5], 0.01);
 [t_100days_global3, sol_100days_global3] = euler(@(t,y) model3(t,y), [0, 24*100], [0,600,15.5], 0.01);
 
-% Extract data for all compartments from t=2336 to t=2372
-% Create time vector for the extraction period
 %t_extraction = t_100days_global1(233600:237200);
 
-% Extract data for all 3 compartments for both models during the time period of interest
 %data_model1_comp1 = sol_100days_global1(233600:237200, 1); % Compartment 1, model 1
 %data_model1_comp2 = sol_100days_global1(233600:237200, 2); % Compartment 2, model 1
 %data_model1_comp3 = sol_100days_global1(233600:237200, 3); % Compartment 3, model 1
@@ -123,14 +120,11 @@ end
 %data_model2_comp2 = sol_100days_global2(233600:237200, 2); % Compartment 2, model 2
 %data_model2_comp3 = sol_100days_global2(233600:237200, 3); % Compartment 3, model 2
 
-% Save as CSV files with the specified structure: Time, Compartment 1, Compartment 2, Compartment 3
-% Create tables for each model with the exact column structure requested
 %model1_table = table(t_extraction, data_model1_comp1, data_model1_comp2, data_model1_comp3, ...
 %                    'VariableNames', {'Time', 'Compartment_1', 'Compartment_2', 'Compartment_3'});
 %model2_table = table(t_extraction, data_model2_comp1, data_model2_comp2, data_model2_comp3, ...
 %                    'VariableNames', {'Time', 'Compartment_1', 'Compartment_2', 'Compartment_3'});
 
-% Write tables to CSV files
 %writetable(model1_table, 'liu_model1_h6.csv');
 %writetable(model2_table, 'liu_model2_h6.csv');
 
@@ -146,7 +140,6 @@ plasma_data_file1 = 'data/liu2022_plasma_concentration.csv';
 csf_data1 = readtable(csf_data_file1);
 plasma_data1 = readtable(plasma_data_file1);
 
-% Extract data from both plasma files
 time_exp1 = csf_data1.Time;
 csf_conc_exp1 = csf_data1.Concentration;
 plasma_conc_exp1 = plasma_data1.Concentration;
