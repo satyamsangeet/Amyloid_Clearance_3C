@@ -1,5 +1,3 @@
-% general graphics, this will apply to any figure you open
-% (groot is the default figure object).
 set(groot, ...
 'DefaultFigureColor', 'w', ...
 'DefaultAxesLineWidth', 0.5, ...
@@ -14,12 +12,10 @@ set(groot, ...
 'DefaultTextFontName', 'Helvetica', ...
 'DefaultAxesBox', 'off', ...
 'DefaultAxesTickLength', [0.02 0.025]);
- 
-% set the tickdirs to go out - need this specific order
+
 set(groot, 'DefaultAxesTickDir', 'out');
 set(groot, 'DefaultAxesTickDirMode', 'manual');
 
-% Updated model function to optimize only sigma_bp (a), sigma_cp (b), and rbc (a12_wake)
 function dydt_n = model(t, y)
     r_bc = 0.038;
     r_bp = 0.014;
@@ -62,7 +58,6 @@ function [t, w] = euler(F, endpoints, initial_conditions, ts)
 end
 
 % Main script
-% Run simulation
 [t_100days_gwrmse1, sol_100days_gwrmse1] = euler(@(t,y) model(t,y), [0, 24*100], [800,600,20], 0.01);
 
 % Parameters for clearance calculations
@@ -73,20 +68,16 @@ sigma_bc = 1.104;
 sigma_bp = 2.412;
 sigma_cp = 6.225;
 
-% Brain volume (typical human brain ISF volume in mL)
-V_brain = 280; % mL (interstitial fluid volume, can adjust based on your model)
+V_brain = 280; % mL
 
-% Extract steady-state concentrations from t=2336 to t=2384
 analysis_idx = find(t_100days_gwrmse1 >= 2336 & t_100days_gwrmse1 <= 2384);
 t_analysis = t_100days_gwrmse1(analysis_idx);
 sol_analysis = sol_100days_gwrmse1(analysis_idx, :);
 
-% Identify wake (8-24) and sleep (0-8) periods
 time_of_day = mod(t_analysis, 24);
 wake_idx = (time_of_day >= 8) & (time_of_day < 24);
 sleep_idx = (time_of_day >= 0) & (time_of_day < 8);
 
-% Calculate mean concentrations during wake and sleep
 wake_brain_conc = mean(sol_analysis(wake_idx, 1));
 sleep_brain_conc = mean(sol_analysis(sleep_idx, 1));
 wake_csf_conc = mean(sol_analysis(wake_idx, 2));
@@ -124,7 +115,6 @@ fprintf('───────────────────────�
 fprintf('ACTUAL FLUX CONTRIBUTIONS (rate × concentration):\n');
 fprintf('─────────────────────────────────────────────────────────────\n\n');
 
-% Calculate fluxes during wake (in model units: pg/mL × h⁻¹)
 flux_bc_wake = r_bc * wake_brain_conc;
 flux_bp_wake = r_bp * wake_brain_conc;
 flux_cp_wake = r_cp * wake_brain_conc;
@@ -153,62 +143,6 @@ fprintf('  Total CNS clearance flux:                       %.2f pg/mL/h\n', flux
 fprintf('  Brain to CSF flux contribution:                 %.2f%%\n', (flux_bc_sleep / flux_total_sleep) * 100);
 fprintf('  BBB flux contribution:                          %.2f%%\n\n', (flux_bp_sleep / flux_total_sleep) * 100);
 fprintf('  Blood CSF flux contribution:                          %.2f%%\n\n', (flux_cp_sleep / flux_total_sleep) * 100);
-
-fprintf('─────────────────────────────────────────────────────────────\n');
-fprintf('CONVERSION TO ng/min FOR COMPARISON WITH ROBERTS ET AL. (2014):\n');
-fprintf('─────────────────────────────────────────────────────────────\n\n');
-
-fprintf('Using brain ISF volume V_brain = %.0f mL\n\n', V_brain);
-
-% Convert flux from pg/mL/h to ng/min
-% flux (pg/mL/h) × V_brain (mL) × (1 ng / 1000 pg) × (1 h / 60 min) = ng/min
-conversion_factor = V_brain * (1/1000) * (1/60);
-
-flux_bc_wake_ngmin = flux_bc_wake * conversion_factor;
-flux_bp_wake_ngmin = flux_bp_wake * conversion_factor;
-flux_cp_wake_ngmin = flux_cp_wake * conversion_factor;
-flux_total_wake_ngmin = flux_total_wake * conversion_factor;
-
-flux_bc_sleep_ngmin = flux_bc_sleep * conversion_factor;
-flux_bp_sleep_ngmin = flux_bp_sleep * conversion_factor;
-flux_cp_sleep_ngmin = flux_cp_sleep * conversion_factor;
-flux_total_sleep_ngmin = flux_total_sleep * conversion_factor;
-
-fprintf('WAKE PERIOD (in ng/min):\n');
-fprintf('  Brain to CSF flux:                      %.2f ng/min\n', flux_bc_wake_ngmin);
-fprintf('  BBB flux:                               %.2f ng/min\n', flux_bp_wake_ngmin);
-fprintf('  Blood CSF flux:                               %.2f ng/min\n', flux_cp_wake_ngmin);
-fprintf('  Total CNS clearance flux:               %.2f ng/min\n', flux_total_wake_ngmin);
-fprintf('  Brain to CSF contribution:              %.2f%%\n', (flux_bc_wake_ngmin / flux_total_wake_ngmin) * 100);
-fprintf('  BBB contribution:                       %.2f%%\n\n', (flux_bp_wake_ngmin / flux_total_wake_ngmin) * 100);
-fprintf('  Blood CSF contribution:                       %.2f%%\n\n', (flux_cp_wake_ngmin / flux_total_wake_ngmin) * 100);
-
-fprintf('SLEEP PERIOD (in ng/min):\n');
-fprintf('  Brain to CSF flux:                      %.2f ng/min\n', flux_bc_sleep_ngmin);
-fprintf('  BBB flux:                               %.2f ng/min\n', flux_bp_sleep_ngmin);
-fprintf('  Blood CSF flux:                               %.2f ng/min\n', flux_cp_sleep_ngmin);
-fprintf('  Total CNS clearance flux:               %.2f ng/min\n', flux_total_sleep_ngmin);
-fprintf('  Brain to CSF contribution:              %.2f%%\n', (flux_bc_sleep_ngmin / flux_total_sleep_ngmin) * 100);
-fprintf('  BBB contribution:                       %.2f%%\n\n', (flux_bp_sleep_ngmin / flux_total_sleep_ngmin) * 100);
-fprintf('  Blood CSF contribution:                       %.2f%%\n\n', (flux_cp_sleep_ngmin / flux_total_sleep_ngmin) * 100);
-
-fprintf('─────────────────────────────────────────────────────────────\n');
-fprintf('COMPARISON WITH ROBERTS ET AL. (2014) EXPERIMENTAL DATA:\n');
-fprintf('─────────────────────────────────────────────────────────────\n\n');
-
-fprintf('Roberts et al. (2014) reported (presumably during wake):\n');
-fprintf('  Total CNS clearance:    9.7 ng/min\n');
-fprintf('  CSF pathway:            5.0 ng/min (51.5%%)\n');
-fprintf('  BBB pathway:            4.7 ng/min (48.5%%)\n\n');
-
-fprintf('Your model during WAKE:\n');
-fprintf('  Total CNS clearance:    %.2f ng/min\n', flux_total_wake_ngmin);
-fprintf('  CSF pathway:            %.2f ng/min (%.1f%%)\n', flux_bc_wake_ngmin, (flux_bc_wake_ngmin / flux_total_wake_ngmin) * 100);
-fprintf('  BBB pathway:            %.2f ng/min (%.1f%%)\n\n', flux_bp_wake_ngmin, (flux_bp_wake_ngmin / flux_total_wake_ngmin) * 100);
-fprintf('  Blood CSF pathway:            %.2f ng/min (%.1f%%)\n\n', flux_cp_wake_ngmin, (flux_cp_wake_ngmin / flux_total_wake_ngmin) * 100);
-
-fprintf('Scaling factor needed to match Roberts et al. total flux:\n');
-fprintf('  %.2fx (apply to concentration or volume if needed)\n\n', 9.7 / flux_total_wake_ngmin);
 
 fprintf('─────────────────────────────────────────────────────────────\n');
 fprintf('SLEEP vs WAKE COMPARISON:\n');
@@ -269,19 +203,15 @@ fprintf('═══════════════════════�
 fprintf('OSCILLATION AMPLITUDE CHANGES (WAKE → SLEEP):\n');
 fprintf('═════════════════════════════════════════════════════════════\n\n');
 
-% Define the two time points for comparison
 t_wake_end = 2352;  % End of first wake period
 t_sleep_end = 2360; % End of first sleep period
 
-% Find indices closest to these times
 [~, idx_wake] = min(abs(t_100days_gwrmse1 - t_wake_end));
 [~, idx_sleep] = min(abs(t_100days_gwrmse1 - t_sleep_end));
 
-% Extract concentrations at these time points
 conc_wake = sol_100days_gwrmse1(idx_wake, :);
 conc_sleep = sol_100days_gwrmse1(idx_sleep, :);
 
-% Calculate percentage changes
 pct_change_brain = ((conc_sleep(1) - conc_wake(1)) / conc_wake(1)) * 100;
 pct_change_csf = ((conc_sleep(2) - conc_wake(2)) / conc_wake(2)) * 100;
 pct_change_plasma = ((conc_sleep(3) - conc_wake(3)) / conc_wake(3)) * 100;
