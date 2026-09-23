@@ -1,4 +1,3 @@
-% Updated model function to optimize only sigma_bp (a), sigma_cp (b), and rbc (a12_wake)
 function dydt_n = model1(t, y)
     r_bc = 0.038;
     r_bp = 0.014;
