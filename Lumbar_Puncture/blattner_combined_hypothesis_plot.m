@@ -202,7 +202,6 @@ xlim([0, 3600]);
 hold off;
 
 %{
-% Create additional plots to visualize all compartments for both models
 figure();
 subplot(3,1,1);
 plot(t_extraction, data_model1_comp1, 'LineWidth', 2.0, 'Color', 'b', 'DisplayName', 'Model 1');
@@ -234,7 +233,6 @@ ylabel('Concentration');
 legend('show');
 hold off;
 
-% Print confirmation message
 fprintf('Data for model1 and model2 from t=2336 to t=2372 has been extracted and saved\n');
 fprintf('CSV files saved: model1_data_t2336_t2372.csv, model2_data_t2336_t2372.csv\n');
 %}
