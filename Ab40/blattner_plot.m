@@ -1,4 +1,3 @@
-% Updated model function to optimize only sigma_bp (a), sigma_cp (b), and rbc (a12_wake)
 function dydt_n = model1(t, y)
     r_bc = 0.038;
     r_bp = 0.014;
@@ -71,7 +70,6 @@ cdata_36hours1_global2 = sol_100days_global2(233600:237600, 2);
 csf_data_file1 = 'data_wake/blattner_ab40_wake_conc.csv';
 csf_data1 = readtable(csf_data_file1);
 
-% Extract data from both plasma files
 time_exp1 = csf_data1.Time;
 csf_conc_exp1 = csf_data1.Concentration;
 csf_lsd1 = csf_data1.LSD1;
@@ -105,12 +103,10 @@ time_start = 2330;
 time_end = 2380;
 time_interval = 2;
 
-% Extract indices corresponding to the desired time points
 selected_time_indices = find(mod(t_100days_global1, time_interval) == 0 & ...
                             t_100days_global1 >= time_start & ...
                             t_100days_global1 <= time_end);
 
-% Extract the corresponding time and compartment data
 time_selected = t_100days_global1(selected_time_indices);
 c1_selected = sol_100days_global1(selected_time_indices, 1);
 c2_selected = sol_100days_global1(selected_time_indices, 2);
