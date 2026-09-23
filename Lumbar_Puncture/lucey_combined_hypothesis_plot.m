@@ -106,16 +106,12 @@ function [t, w] = euler(F, endpoints, initial_conditions, ts)
     t = t(:);
 end
 
-% Run simulations for both models for 100 days
 [t_100days_global1, sol_100days_global1] = euler(@(t,y) model1(t,y), [0, 24*100], [0,600,15.5], 0.01);
 [t_100days_global2, sol_100days_global2] = euler(@(t,y) model2(t,y), [0, 24*100], [0,600,15.5], 0.01);
 [t_100days_global3, sol_100days_global3] = euler(@(t,y) model3(t,y), [0, 24*100], [0,600,15.5], 0.01);
 
-% Extract data for all compartments from t=2336 to t=2372
-% Create time vector for the extraction period
 %t_extraction = t_100days_global1(233600:237200);
 
-% Extract data for all 3 compartments for both models during the time period of interest
 %data_model1_comp1 = sol_100days_global1(233600:237200, 1); % Compartment 1, model 1
 %data_model1_comp2 = sol_100days_global1(233600:237200, 2); % Compartment 2, model 1
 %data_model1_comp3 = sol_100days_global1(233600:237200, 3); % Compartment 3, model 1
@@ -124,18 +120,14 @@ end
 %data_model2_comp2 = sol_100days_global2(233600:237200, 2); % Compartment 2, model 2
 %data_model2_comp3 = sol_100days_global2(233600:237200, 3); % Compartment 3, model 2
 
-% Save as CSV files with the specified structure: Time, Compartment 1, Compartment 2, Compartment 3
-% Create tables for each model with the exact column structure requested
 %model1_table = table(t_extraction, data_model1_comp1, data_model1_comp2, data_model1_comp3, ...
 %                    'VariableNames', {'Time', 'Compartment_1', 'Compartment_2', 'Compartment_3'});
 %model2_table = table(t_extraction, data_model2_comp1, data_model2_comp2, data_model2_comp3, ...
 %                    'VariableNames', {'Time', 'Compartment_1', 'Compartment_2', 'Compartment_3'});
 
-% Write tables to CSV files
 %writetable(model1_table, 'blattner_model1_h8.csv');
 %writetable(model2_table, 'blattner_model2_h8.csv');
 
-% For backward compatibility, keep existing cdata_36hours extraction
 cdata_36hours1_global1 = sol_100days_global1(233600:237200, 2);
 cdata_36hours1_global2 = sol_100days_global2(233600:237200, 2);
 cdata_36hours1_global3 = sol_100days_global3(233600:237200, 2);
@@ -143,7 +135,6 @@ cdata_36hours1_global3 = sol_100days_global3(233600:237200, 2);
 csf_data_file1 = 'data/lucey2018_csf_concentration.csv';
 csf_data1 = readtable(csf_data_file1);
 
-% Extract data from both plasma files
 time_exp1 = csf_data1.Time;
 csf_conc_exp1 = csf_data1.Concentration;
 csf_lsd1 = csf_data1.LSD;
@@ -234,7 +225,6 @@ ylabel('Concentration');
 legend('show');
 hold off;
 
-% Print confirmation message
 fprintf('Data for model1 and model2 from t=2336 to t=2372 has been extracted and saved\n');
 fprintf('CSV files saved: model1_data_t2336_t2372.csv, model2_data_t2336_t2372.csv\n');
 %}
